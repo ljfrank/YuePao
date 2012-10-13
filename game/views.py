@@ -4,6 +4,8 @@ from django.shortcuts import redirect, render_to_response
 from django.core.context_processors import csrf
 from game.models import User
 
+
+
 def home(request):
     if 'username' in request.session:
         t = loader.get_template('game/templates/home.html')
