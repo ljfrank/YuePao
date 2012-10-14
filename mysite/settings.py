@@ -103,7 +103,7 @@ ROOT_URLCONF = 'mysite.urls'
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'D:/Code/planet/mysite'  # DuJiangfan
+    'game/template'  # DuJiangfan
 )
 
 INSTALLED_APPS = (

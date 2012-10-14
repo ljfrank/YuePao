@@ -4,15 +4,13 @@ from django.shortcuts import redirect, render_to_response
 from django.core.context_processors import csrf
 from game.models import User
 
-
-
 def home(request):
     if 'username' in request.session:
-        t = loader.get_template('game/templates/home.html')
+        t = loader.get_template('home.html')
         c = Context({'user':request.session.get('username')})
         return HttpResponse(t.render(c))
     else:
-        t = loader.get_template('game/templates/welcome.html')
+        t = loader.get_template('welcome.html')
         c = Context({})
         return HttpResponse(t.render(c))
 
@@ -33,7 +31,7 @@ def login(request):
         except User.DoesNotExist:
             return HttpResponse('not valid username!')
     if request.method == 'GET':
-        t = loader.get_template('game/templates/login.html')
+        t = loader.get_template('login.html')
         c = RequestContext(request)
         return HttpResponse(t.render(c))
 
@@ -41,7 +39,7 @@ def signup(request):
     if 'username' in request.session:
         return redirect('home')
     if request.method == 'GET':
-        t = loader.get_template('game/templates/signup.html')
+        t = loader.get_template('signup.html')
         c = RequestContext(request)
         return HttpResponse(t.render(c))
     if request.method == 'POST':
@@ -58,4 +56,4 @@ def user(request, userID):
         return redirect('home')
     if request.method =='GET':
         user = User.objects.get(id=userID)
-        return render_to_response('game/templates/user.html', {'user': user})
+        return render_to_response('guser.html', {'user': user})
