@@ -56,4 +56,4 @@ def user(request, userID):
         return redirect('home')
     if request.method =='GET':
         user = User.objects.get(id=userID)
-        return render_to_response('guser.html', {'user': user})
+        return render_to_response('user.html', {'user': user})
