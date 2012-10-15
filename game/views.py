@@ -49,7 +49,7 @@ def signup(request):
             user = User(name=request.POST['username'], password=request.POST['password'])
             user.save()
             request.session['username']=request.POST['username']
-            return redirect('user/'+user.id)
+            return redirect('user/'+str(user.id))
 
 def user(request, userID):
     if 'username' not in request.session:
