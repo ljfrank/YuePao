@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}{% endblock %} -- 约炮网, 专注约炮50年</title>
-    <link rel="stylesheet" href="static/css/common.css" type="text/css"/>
+    <title>{{ user.name }} -- 约炮网, 专注约炮50年</title>
+    <link rel="stylesheet" href="/static/css/common.css" type="text/css"/>
 </head>
 <body>
 	<div id="header">
@@ -10,9 +10,15 @@
 			<a href="/" id="logo">YuePao</a>
 			<div id="header-nav">
 				<ul id="nav">
-					{% for k,v in nav.items %}
-						<li><a href="{{v}}">{{k}}</a></li>
-					{% endfor %}
+					<li><a href="/">Home</a></li>
+					<li><a href="/user/">Users</a></li>
+					{% if user %}
+						<li><a href="/user/{{ user.id }}/">Settings</a></li>
+						<li><a href="/logout/">Log Out</a></li>
+					{% else %}
+						<li><a href="/login/">Log In</a></li>
+						<li><a href="/signup/">Sign Up</a></li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>

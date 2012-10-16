@@ -1,8 +1,7 @@
 {% extends "frame.html" %}
 {% block content %}
 <form method='post' action='/signup/'>{% csrf_token %}
-	<input type='text' value='username' name='username'>
-	<input type='password' value='password' name='password'>
+	{{ form.as_p }}
 	<input type='submit' value='signup'>
 </form>
 {% endblock%}
