@@ -3,6 +3,9 @@ from game.helpers import *
 from django import forms
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from game.models import UserProfile
 
 def login(request):
     if user_logged_in(request):
@@ -13,10 +16,10 @@ def login(request):
     if request.method == 'POST':
         form = LogInForm(request.POST)
         if form.is_valid():
-            user = validate_user(form.cleaned_data['username'], form.cleaned_data['password'])
+            user = authenticate(username = form.cleaned_data['username'], password = form.cleaned_data['password'])
             if user == None:
                 return render_to_response(LOGIN_PATH, {'form':form, 'user':None}, context_instance=RequestContext(request))
-            request.session['username'] = user.name
+            request.session['username'] = user.username
             return redirect('/', {'user':user})
         else:
             return render_to_response(LOGIN_PATH, {'form':form, 'user':None}, context_instance=RequestContext(request))
@@ -40,12 +43,14 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             try:
-                user = User.objects.get(name=request.POST['username'])
+                user = User.objects.get(username=request.POST['username'])
             except User.DoesNotExist:
-                user = User(name=form.cleaned_data['username'], password=form.cleaned_data['password'])
+                user = User.objects.create_user(form.cleaned_data['username'], None, form.cleaned_data['password']);
+                user_profile = UserProfile(user=user)
                 user.save()
+                user_profile.save()
                 request.session['username']=form.cleaned_data['username']
-                return redirect('/user/'+str(user.id))
+                return redirect('/')
         return render_to_response(SIGNUP_PATH, {'form':form, 'user':None}, context_instance=RequestContext(request))
 
 class SignUpForm(forms.Form):
@@ -55,7 +60,7 @@ class SignUpForm(forms.Form):
 def user(request, userID):
     if not user_logged_in(request):
         return redirect('/')
-    user = User.objects.get(name=request.session['username'])
+    user = User.objects.get(username=request.session['username'])
     if int(user.id) == int(userID):
         if request.method == 'GET':
             form = ChangePWForm()
@@ -63,7 +68,7 @@ def user(request, userID):
         if request.method == 'POST':
             form = ChangePWForm(request.POST)
             if form.is_valid():
-                user.password = form.cleaned_data['password']
+                user.set_password(form.cleaned_data['password'])
                 user.save()
             return render_to_response(SETTING_PATH, {'form':form, 'user':user}, context_instance=RequestContext(request))
         return redirect('/')

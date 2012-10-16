@@ -1,4 +1,5 @@
-from game.models import User
+from game.models import UserProfile
+from django.contrib.auth.models import User
 
 def user_logged_in(request):
     return 'username' in request.session
