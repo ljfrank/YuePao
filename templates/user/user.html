@@ -1,3 +1,5 @@
+{% extends "frame.html" %}
+{% block content %}
 <h1>Welcome, {{user.name}}</h1>
 <form method='get' action='logout/'>
 	<input type='submit' value='logout'>
@@ -5,3 +7,4 @@
 <form method='get' action='/'>
 	<input type='submit' value='home'>
 </form>
+{% endblock %}

@@ -4,22 +4,36 @@ from django.shortcuts import redirect, render_to_response
 from django.core.context_processors import csrf
 from game.models import User
 
-def home(request):
-    if 'username' in request.session:
-        t = loader.get_template('home.html')
-        c = Context({'user':request.session.get('username')})
-        return HttpResponse(t.render(c))
+welcome_path = 'home/welcome.html'
+user_path = 'user/user.html'
+login_path = 'user/login.html'
+signup_path = 'user/signup.html'
+
+def user_logged_in(request):
+    return 'username' in request.session
+
+def nav_link(request):
+    ret={}
+    ret['Home']='/'
+    if user_logged_in(request):
+        user = User.objects.get(name=request.session['username'])
+        ret['Log Out']='/logout/'
+        ret['User']='/user/'+str(user.id)+'/'
     else:
-        t = loader.get_template('welcome.html')
-        c = Context({})
-        return HttpResponse(t.render(c))
+        ret['Log In']='/login/'
+    return ret
+
+def home(request):
+    t = loader.get_template(welcome_path)
+    c = Context({'nav':nav_link(request)})
+    return HttpResponse(t.render(c))
 
 def logout(request):
     request.session.pop('username')
     return redirect('home')
 
 def login(request):
-    if 'username' in request.session:
+    if user_logged_in(request):
         return redirect('home')
     if request.method == 'POST':
         try:
@@ -31,8 +45,8 @@ def login(request):
         except User.DoesNotExist:
             return HttpResponse('not valid username!')
     if request.method == 'GET':
-        t = loader.get_template('login.html')
-        c = RequestContext(request)
+        t = loader.get_template(login_path)
+        c = RequestContext(request, {''})
         return HttpResponse(t.render(c))
 
 def signup(request):
@@ -49,7 +63,7 @@ def signup(request):
             user = User(name=request.POST['username'], password=request.POST['password'])
             user.save()
             request.session['username']=request.POST['username']
-            return redirect('user/'+user.id)
+            return redirect('user/'+str(user.id))
 
 def user(request, userID):
     if 'username' not in request.session:
