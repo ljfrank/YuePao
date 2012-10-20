@@ -1,0 +1,10 @@
+{% extends "frame.html" %}
+{% block content %}
+<div id="users">
+	{% for u in users %}
+		<div class="usernote">
+			<a href="/user/{{u.id}}/">{{u.username}}</a>
+		</div>
+	{% endfor%}
+</div>
+{% endblock %}
