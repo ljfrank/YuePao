@@ -6,9 +6,14 @@ body {
 }
 
 a {
+	color:#444444;
 	text-decoration: none;
 }
 
+a:visited{
+	color:#444444;
+	text-decoration:none;
+}
 div {
 	display:block;
 }
@@ -83,4 +88,15 @@ div {
 #footer {
 	margin-top: 10px;
 	border-top: 1px solid #EAEAEA;
+}
+
+.usernote{
+	margin-top:32px;
+	width:800px;
+	height:20px;
+	border-bottom: 1px solid #888888;
+}
+
+.fl{
+	float:left;
 }
