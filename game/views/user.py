@@ -73,7 +73,8 @@ def user(request, userID):
         return redirect('/')
     else:
         showuser = User.objects.get(id=userID)
-        return render_to_response(USER_PATH, {'showuser':showuser})
+        tweet = showuser.tweet_set.get(user=showuser);
+        return render_to_response(USER_PATH, {'showuser':showuser, 'tweet':tweet})
 
 class ChangePWForm(forms.Form):
     password = forms.CharField(label='New Password', widget=forms.PasswordInput, required=True, max_length=20)
