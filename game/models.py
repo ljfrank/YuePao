@@ -8,8 +8,10 @@ class UserProfile(models.Model):
 class Tweet(models.Model):
     user = models.ForeignKey(User);
     content = models.CharField(max_length=140);
-    time = models.DateTimeField(auto_now_add=True);
+    time_posted = models.DateTimeField(auto_now_add=True);
 
-class Reply(models.Model):
+class Comment(models.Model):
     user = models.ForeignKey(User);
     tweet = models.ForeignKey(Tweet);
+    time_posted = models.DateTimeField(auto_now_add=True);
+    content = models.CharField(max_length=300);

@@ -2,4 +2,4 @@ from game.models import *
 from django.contrib import admin
 
 admin.site.register(Tweet)
-admin.site.register(Reply)
+admin.site.register(Comment)
