@@ -7,35 +7,35 @@ def posts(request, userID):
     return HttpResponse('!');
 
 @login_required
-def showJB(request):
+def tweet(request):
     if request.method == 'POST':
         return redirect('/')
     else:
         return redirect('/')
 
 @login_required
-def makeLove(request):
+def comment(request):
     if request.method == 'POST':
         return redirect('/')
     else:
         return redirect('/')
 
 @login_required
-def showPussy(request):
+def retweet(request):
     if request.method == 'POST':
         return redirect('/')
     else:
         return redirect('/')
    
 @login_required
-def buyPorn(request):
+def watch(request):
     if request.method == 'POST':
         return redirect('/')
     else:
         return redirect('/')
 
 @login_required
-def makePornMovie(request):
+def star(request):
     if request.method == 'POST':
         return redirect('/')
     else:
