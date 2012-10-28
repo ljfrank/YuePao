@@ -1,3 +1,5 @@
+/* frame */
+
 body {
 	margin:0;
 	background-color:#FFFFFF;
@@ -22,11 +24,6 @@ a, a:visited {
 	float:left;
 	font-weight: bold;
 	color:white;
-}
-
-#header-wrapper {
-	width:940px;
-	margin:0 auto;
 }
 
 #header-nav {
@@ -60,16 +57,40 @@ a, a:visited {
 }
 
 #content {
-	margin:10px auto;
-	width:940px;
 	text-align:center;
 }
 
 #footer {
-	margin-top: 10px;
 	border-top: 1px solid #EAEAEA;
+	color:#666666;
 }
 
+#footer a, a:visited{
+	color:#000000;
+}
+
+.fl{
+	float:left;
+}
+
+.fr{
+	float:right;
+}
+
+.oh{
+	overflow:hidden;
+}
+
+.center{
+	width:940px;
+	margin:0 auto 10px auto;
+}
+
+.tc-4{
+	color:#444;
+}
+
+/**/
 .usernote{
 	margin-top:32px;
 	width:800px;
@@ -77,6 +98,44 @@ a, a:visited {
 	border-bottom: 1px solid #888888;
 }
 
-.fl{
-	float:left;
+/* content-header */
+#content-header{
+	background-color:#f0f0f0;
+	padding:10px 0px 0px 0px;
+}
+
+/* user-prof */
+#user-prof{
+	width:200px;
+	padding-left:15px;
+}
+
+#username{
+	overflow:hidden;
+	text-align:left;
+	padding-left:10px;
+	font-size:16px;
+}
+
+/* tweetform */
+#tweetform {
+	overflow:hidden;
+	width:498px;
+}
+
+#tweetform textarea{
+	rows:3;
+}
+
+/* tweet */
+.tweet{
+	background-color:#eee;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	margin-bottom:10px;
+	text-align:left;
+}
+
+.tweet span{
+	margin:10px;
 }

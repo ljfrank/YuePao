@@ -1,4 +1,20 @@
 {% extends "frame.html" %}
 {% block content %}
-<h1>Welcome, {{user.username}}</h1>
+<div id='content-header' class='center'>
+	<div id='user-prof' class='fl'>
+		<img src="http://tp4.sinaimg.cn/2668684791/50/5626936701/1" class='fl'/>
+		<div id='username'>
+			<a href='/user/{{user.id}}/'>{{user.username}}</a>
+		</div>
+	</div>
+	<div id='tweetform'>
+		<form method='post' action='/showJB/'>{% csrf_token %}
+			<div>
+				{{ form.tweet }}
+			</div>
+			<label for="id_message" class='fl tc-4'>&nbsp;Anything wanna say today?</label>
+			<input type='submit' value='Post' class='btn btn-large fr'>
+		</form>
+	</div>
+</div>
 {% endblock %}

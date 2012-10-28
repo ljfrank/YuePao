@@ -10,6 +10,8 @@ urlpatterns += patterns('game.views.user',
     url(r'^signup/?$', 'signup'),
     url(r'^user/(?P<userID>\d+)/?$', 'user'),
     url(r'^user/?$', 'users'),
+    url(r'^follow/(?P<userID>\d+)/?$', 'follow'),
+    url(r'^unfollow/(?P<userID>\d+)/?$', 'unfollow'),
 )
 
 urlpatterns += patterns('game.views.post',
