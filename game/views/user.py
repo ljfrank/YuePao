@@ -70,8 +70,8 @@ def settings(request):
 
 @login_required
 def users(request):
-    users = User.objects.all()
-    return render_to_response(SHOWUSER_PATH, {'users':users, 'user':request.user}, context_instance=RequestContext(request))
+    users = UserProfile.objects.all()
+    return render_to_response(SHOWUSER_PATH, {'user_profiles':users, 'user':request.user}, context_instance=RequestContext(request))
 
 @login_required
 def follow(request, userID):
