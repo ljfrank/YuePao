@@ -48,7 +48,7 @@ def user(request, userID):
     except Follow.DoesNotExist:
         follow = None
     tweets = showuser.tweet_set.all()
-    return render_to_response(USER_PATH, {'showuser':showuser, 'tweets':tweets, 'user':request.user, 'follow':follow})
+    return render_to_response(USER_PATH, {'showuser':showuser, 'tweets':tweets, 'user':request.user, 'follow':follow}, context_instance=RequestContext(request))
 
 @login_required
 def settings(request):
@@ -66,7 +66,7 @@ def settings(request):
 @login_required
 def users(request):
     users = User.objects.all()
-    return render_to_response(SHOWUSER_PATH, {'users':users, 'user':request.user})
+    return render_to_response(SHOWUSER_PATH, {'users':users, 'user':request.user}, context_instance=RequestContext(request))
 
 @login_required
 def follow(request, userID):
