@@ -18,6 +18,6 @@ class Comment(models.Model):
     content = models.CharField(max_length=300)
 
 class Follow(models.Model):
-    followee = models.ForeignKey(UserProfile, related_name='asfollowee_set')
-    follower = models.ForeignKey(UserProfile, related_name='asfollower_set')
+    diao_si = models.ForeignKey(UserProfile, related_name='as_diao_si_set')
+    goddess = models.ForeignKey(UserProfile, related_name='as_goddess_set')
     date_followed = models.DateTimeField(auto_now_add=True)
