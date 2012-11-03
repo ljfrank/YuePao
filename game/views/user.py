@@ -41,12 +41,17 @@ def signup(request):
 
 @login_required
 def user(request, userID):
-    showuser = User.objects.get(id=userID)
+    try:
+        showuser = User.objects.get(id=userID)
+    except User.DoesNotExist:
+        return users(request)
     user = request.user
     try:
         follow = Follow.objects.get(followee=showuser.userprofile, follower=user.userprofile)
     except Follow.DoesNotExist:
         follow = None
+    except UserProfile.DoesNotExist:
+        return users(request);
     tweets = showuser.tweet_set.all()
     return render_to_response(USER_PATH, {'showuser':showuser, 'tweets':tweets, 'user':request.user, 'follow':follow}, context_instance=RequestContext(request))
 
