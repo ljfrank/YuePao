@@ -2,7 +2,7 @@
 {% block content %}
 <div id='content-header' class='center'>
 	<div id='user-prof' class='fl'>
-		<img src="http://tp4.sinaimg.cn/2668684791/50/5626936701/1" class='fl'/>
+		<img src="http://tp4.sinaimg.cn/2668684791/50/5626936701/1" class='figure-small fl'/>
 		<div id='username'>
 			<a href='/user/{{user.id}}/'>{{user.username}}</a>
 		</div>
@@ -21,7 +21,7 @@
 <script>
 	for (i = 0; i < 10; i++)
 	{
-		document.write("<div><button>Hello</button></div>");
+		document.write("<div class='tweet_cube'><img src='http://tp4.sinaimg.cn/2668684791/50/5626936701/1' class='figure-small tweet_picbox' />{{user.username}}:Hello</div>");
 	}
 </script>
 </div>
