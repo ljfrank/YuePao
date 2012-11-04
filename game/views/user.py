@@ -110,3 +110,15 @@ def unfollow(request, userID):
         return redirect('/')
     except Follow.DoesNotExist:
         return redirect('/')
+
+@login_required
+def fans(request, userID):
+    user = User.objects.get(id = userID)
+    try:
+        fans = Follow.objects.filter(goddess = user.userprofile)
+        fansProfiles = []
+        for fan in fans:
+            fansProfiles.append(fan.diao_si)
+    except Follow.DoesNotExist:
+        fansProfiles = None
+    return users(request, fansProfiles)
