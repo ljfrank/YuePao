@@ -17,4 +17,23 @@
 		</form>
 	</div>
 </div>
+<div>
+<script>
+	for (i = 0; i < 10; i++)
+	{
+		document.write("<div><button>Hello</button></div>");
+	}
+</script>
+</div>
+
+<script>
+$(function(){
+	$("button, input[type=submit]")
+		.button()
+		.click(function(event){
+			event.preventDefault();
+		});
+});
+</script>
+
 {% endblock %}

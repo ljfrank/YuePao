@@ -17,6 +17,10 @@ a, a:visited {
 	background-image: -webkit-linear-gradient(top, #333, #222);
 	background-image: -o-linear-gradient(top, #333, #222);
 	background-image: linear-gradient(top, #333, #222);
+	position: fixed;
+	height: 36px;
+	top: 0;
+	z-index: 1000;
 }
 
 #logo {
@@ -58,6 +62,7 @@ a, a:visited {
 
 #content {
 	text-align:center;
+	margin: 36px auto 0 auto;
 }
 
 #footer {
