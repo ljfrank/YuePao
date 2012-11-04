@@ -9,6 +9,14 @@ from django.contrib.auth.views import logout as authlogout
 from django.contrib.auth.decorators import login_required
 from game.models import UserProfile
 
+@login_required
+def followed(request, userID):
+    requested_user = User.objects.get(id = userID)
+    user_profile = UserProfile.objects.get(user = requested_user)
+    follows = Follow.objects.filter(diao_si = user_profile)
+    user_profile_list = [follow.goddess for follow in follows]
+    return users(request, user_profile_list)
+
 def login(request):
     if request.user.is_authenticated():
         return redirect('/')
@@ -41,14 +49,19 @@ def signup(request):
 
 @login_required
 def user(request, userID):
-    showuser = User.objects.get(id=userID)
+    try:
+        showuser = User.objects.get(id=userID)
+    except User.DoesNotExist:
+        return users(request)
     user = request.user
     try:
-        follow = Follow.objects.get(followee=showuser.userprofile, follower=user.userprofile)
+        follow = Follow.objects.get(goddess=showuser.userprofile, diao_si=user.userprofile)
     except Follow.DoesNotExist:
         follow = None
+    except UserProfile.DoesNotExist:
+        return users(request);
     tweets = showuser.tweet_set.all()
-    return render_to_response(USER_PATH, {'showuser':showuser, 'tweets':tweets, 'user':request.user, 'follow':follow})
+    return render_to_response(USER_PATH, {'showuser':showuser, 'tweets':tweets, 'user':request.user, 'follow':follow}, context_instance=RequestContext(request))
 
 @login_required
 def settings(request):
@@ -64,22 +77,23 @@ def settings(request):
     return redirect('/')
 
 @login_required
-def users(request):
-    users = User.objects.all()
-    return render_to_response(SHOWUSER_PATH, {'users':users, 'user':request.user})
+def users(request, user_list = None):
+    if user_list == None:
+        user_list = UserProfile.objects.all()
+    return render_to_response(SHOWUSER_PATH, {'user_profiles':user_list, 'user':request.user}, context_instance=RequestContext(request))
 
 @login_required
 def follow(request, userID):
     user = request.user
     try:
-        followee = User.objects.get(id=userID)
+        goddess = User.objects.get(id=userID)
     except User.DoesNotExist:
         return redirect('/')
     try:
-        follow = Follow.objects.get(followee=followee.userprofile, follower=user.userprofile)
+        follow = Follow.objects.get(goddess=goddess.userprofile, diao_si=user.userprofile)
         return redirect('/')
     except Follow.DoesNotExist:
-        follow = Follow(followee=followee.userprofile, follower=user.userprofile)
+        follow = Follow(goddess=goddess.userprofile, diao_si=user.userprofile)
         follow.save()
     return redirect('/')
     
@@ -87,12 +101,24 @@ def follow(request, userID):
 def unfollow(request, userID):
     user = request.user
     try:
-        followee = User.objects.get(id=userID)
+        ex_goddess = User.objects.get(id=userID)
     except User.DoesNotExist:
         return redirect('/')
     try:
-        follow = Follow.objects.get(followee=followee.userprofile, follower=user.userprofile)
+        follow = Follow.objects.get(goddess=ex_goddess.userprofile, diao_si=user.userprofile)
         follow.delete()
         return redirect('/')
     except Follow.DoesNotExist:
         return redirect('/')
+
+@login_required
+def fans(request, userID):
+    user = User.objects.get(id = userID)
+    try:
+        fans = Follow.objects.filter(goddess = user.userprofile)
+        fansProfiles = []
+        for fan in fans:
+            fansProfiles.append(fan.diao_si)
+    except Follow.DoesNotExist:
+        fansProfiles = None
+    return users(request, fansProfiles)
