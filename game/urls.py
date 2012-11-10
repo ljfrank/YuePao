@@ -20,7 +20,7 @@ urlpatterns += patterns('game.views.post',
     url(r'^user/(?P<userID>\d+)/posts/?$', 'posts'),
     url(r'^showJB/?$', 'tweet'),
     url(r'^makeLove/?$', 'comment'),
-    url(r'^showPussy/?$', 'retweet'),
+    url(r'^tweet/(?P<tweetID>\d+)/retweet/?$', 'retweet'),
     url(r'^buyPorn/?$', 'watch'),  
     url(r'^makePornMovie/?$', 'star'),
 )
