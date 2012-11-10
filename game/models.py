@@ -10,6 +10,10 @@ class Tweet(models.Model):
     user = models.ForeignKey(User)
     content = models.CharField(max_length=200)
     time_posted = models.DateTimeField(auto_now_add=True)
+    retweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='original_tweet_set')
+    original_tweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='retweet_set')
+    retweet_count = models.IntegerField(default=0)
+    deleted = models.BooleanField(default=False)
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
