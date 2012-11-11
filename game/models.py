@@ -17,7 +17,7 @@ class Tweet(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
-    tweet = models.ForeignKey(Tweet)
+    tweet = models.ForeignKey(Tweet,)
     time_posted = models.DateTimeField(auto_now_add=True)
     content = models.CharField(max_length=300)
 

@@ -17,23 +17,4 @@
 		</form>
 	</div>
 </div>
-<div>
-<script>
-	for (i = 0; i < 10; i++)
-	{
-		document.write("<div class='tweet_cube'><img src='http://tp4.sinaimg.cn/2668684791/50/5626936701/1' class='figure-small tweet_picbox' />{{user.username}}:Hello</div>");
-	}
-</script>
-</div>
-
-<script>
-$(function(){
-	$("button, input[type=submit]")
-		.button()
-		.click(function(event){
-			event.preventDefault();
-		});
-});
-</script>
-
 {% endblock %}

@@ -23,7 +23,13 @@ def tweet(request):
 @login_required
 def comment(request):
     if request.method == 'POST':
-        return redirect('/')
+        try:
+            tweet = Tweet.objects.get(id=request.POST['tweetid'])
+            comment = Comment(user=request.user, content=request.POST['content'], tweet=tweet)
+            comment.save()
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+        except Tweet.DoesNotExist:
+            return redirect('/')
     else:
         return redirect('/')
 
@@ -38,7 +44,7 @@ def retweet(request, tweetID):
             return redirect('/')    #here we may need to redirect to an error page.
     except Tweet.DoesNotExist :
         return redirect('/')    #here we may need to redirect to an error page.
-    if request.method == 'POST':
+    if request.method == 'POST': 
         form = TweetForm(request.POST)
         if form.is_valid():
             original_tweet = retweet.original_tweet if retweet.original_tweet else retweet

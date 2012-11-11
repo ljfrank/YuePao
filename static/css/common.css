@@ -62,7 +62,7 @@ a, a:visited {
 
 #content {
 	text-align:center;
-	margin: 36px auto 0 auto;
+	margin: 40px auto 0 auto;
 }
 
 #footer {
@@ -95,6 +95,10 @@ a, a:visited {
 	color:#444;
 }
 
+.fs14{
+	font-size: 14px;
+}
+
 /**/
 .usernote{
 	margin-top:32px;
@@ -120,48 +124,4 @@ a, a:visited {
 	text-align:left;
 	padding-left:10px;
 	font-size:16px;
-}
-
-/* tweetform */
-#tweetform {
-	overflow:hidden;
-	width:498px;
-}
-
-#tweetform textarea{
-	rows:3;
-}
-
-/* tweet */
-.figure-small{
-	width: 70px;
-	height: 70px;
-	margin: 5px 10px 5px 10px;
-	border: 1px solid white;
-	-webkit-box-shadow:0px 0px 2px black;
-	-moz-box-shadow:0px 0px 2px black;
-	filter:progid:DXImageTransform.Microsoft.Shadow(color=black,direction=0,strength=2);
-	box-shadow:0px 0px 2px black;
-}
-
-.tweet_cube{
-	width: 100%;
-	margin: auto 5px auto 10px;
-	text-align: left;
-	border-bottom: 1px solid black;
-}
-
-.tweet_picbox{
-	vertical-align: text-top;
-}
-
-.tweet{
-	background-color:#eee;
-	border-bottom:1px solid #ccc;
-	margin-bottom:10px;
-	text-align:left;
-}
-
-.tweet span{
-	margin:10px;
 }
