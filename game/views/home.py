@@ -11,4 +11,5 @@ def home(request, form=None):
         if form is None:
 		    form = TweetForm()
         return render_to_response(HOME_PATH, {'form':form}, context_instance=RequestContext(request))
-    return render_to_response(WELCOME_PATH, context_instance=RequestContext(request))
+    form = LogInForm()
+    return render_to_response(WELCOME_PATH, {'form':form}, context_instance=RequestContext(request))

@@ -1,7 +1,13 @@
 {% extends "frame.html" %}
 {% block content %}
 <div id="welcome">
-	<h2>Welcome to YuePao!</h2>
-	<h3>It's a place you'll never be lonely.</h3>
+	<div id="welcome-login">
+		<div id="login">
+			<form method='post' action='/login/'>{% csrf_token %}
+				{{ form.as_p }}
+				<input type='submit' value='login'>
+			</form>
+		</div>
+	</div>
 </div>
 {% endblock %}

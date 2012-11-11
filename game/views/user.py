@@ -20,16 +20,12 @@ def followed(request, userID):
 def login(request):
     if request.user.is_authenticated():
         return redirect('/')
-    if request.method == 'GET':
-        form = LogInForm()
-        return render_to_response(LOGIN_PATH, {'form':form}, context_instance=RequestContext(request))
     if request.method == 'POST':
         form = LogInForm(request.POST)
         if form.is_valid():
             form.save(request)
             return redirect('/', {'user':user})
-        else:
-            return render_to_response(LOGIN_PATH, {'form':form}, context_instance=RequestContext(request))
+    return redirect('/')
 
 def logout(request):
     return authlogout(request, next_page='/')
@@ -88,14 +84,14 @@ def follow(request, userID):
     try:
         goddess = User.objects.get(id=userID)
     except User.DoesNotExist:
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     try:
         follow = Follow.objects.get(goddess=goddess.userprofile, diao_si=user.userprofile)
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
         follow = Follow(goddess=goddess.userprofile, diao_si=user.userprofile)
         follow.save()
-    return redirect('/')
+    return redirect(request.META.get('HTTP_REFERER', '/'))
     
 @login_required
 def unfollow(request, userID):
@@ -103,13 +99,13 @@ def unfollow(request, userID):
     try:
         ex_goddess = User.objects.get(id=userID)
     except User.DoesNotExist:
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     try:
         follow = Follow.objects.get(goddess=ex_goddess.userprofile, diao_si=user.userprofile)
         follow.delete()
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
-        return redirect('/')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
 
 @login_required
 def fans(request, userID):

@@ -62,12 +62,15 @@ a, a:visited {
 
 #content {
 	text-align:center;
-	margin: 40px auto 0 auto;
+	position:relative;
+	margin: 50px auto 0 auto;
 }
 
 #footer {
 	border-top: 1px solid #EAEAEA;
 	color:#666666;
+	position:relative;
+	margin-top:10px;
 }
 
 #footer a, a:visited{
