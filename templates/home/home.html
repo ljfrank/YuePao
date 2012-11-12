@@ -1,12 +1,6 @@
-{% extends "frame.html" %}
-{% block content %}
-<div id='content-header' class='center'>
-	<div id='user-prof' class='fl'>
-		<img src="http://tp4.sinaimg.cn/2668684791/50/5626936701/1" class='figure-small fl'/>
-		<div id='username'>
-			<a href='/user/{{user.id}}/'>{{user.username}}</a>
-		</div>
-	</div>
+{% extends "two-row.html" %}
+
+{% block left %}
 	<div id='tweetform'>
 		<form method='post' action='/showJB/'>{% csrf_token %}
 			<div>
@@ -16,5 +10,8 @@
 			<input type='submit' value='Post' class='btn btn-large fr'>
 		</form>
 	</div>
-</div>
 {% endblock %}
+
+{% block right %}
+	{% include "user/user_section.html" %}
+{% endblock%}

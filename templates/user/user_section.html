@@ -1,0 +1,13 @@
+<div id='user-section'>
+	<div id='user-section-head'>
+		<img src='http://tp4.sinaimg.cn/2668684791/50/5626936701/1' class='fl' />
+		<div id='user-section-name'>
+			<a href='/user/{{user.id}}'>{{user.username}}</a>
+		</div>
+	</div>
+	<ul class='user-extra'>
+		<li>{{ user.as_diao_si_set.all|length }} Following</li>
+		<li>{{ user.as_goddess_set.all|length }} Followers</li>
+		<li>{{ user.tweet_set.all|length }} Tweets</li>
+	</ul>
+</div>

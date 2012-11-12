@@ -8,8 +8,12 @@ body {
 }
 
 a, a:visited {
-	color:#444444;
+	color:#008888;
 	text-decoration: none;
+}
+
+a:hover{
+	text-decoration:underline;
 }
 
 #header {
@@ -73,7 +77,7 @@ a, a:visited {
 	margin-top:10px;
 }
 
-#footer a, a:visited{
+#footer a,#footer a:visited{
 	color:#000000;
 }
 
@@ -110,21 +114,9 @@ a, a:visited {
 	border-bottom: 1px solid #888888;
 }
 
-/* content-header */
-#content-header{
-	background-color:#f0f0f0;
-	padding:10px 0px 0px 0px;
+#two-row-left{
+	width:700px;
 }
 
-/* user-prof */
-#user-prof{
-	width:200px;
-	padding-left:15px;
-}
-
-#username{
-	overflow:hidden;
-	text-align:left;
-	padding-left:10px;
-	font-size:16px;
+#two-row-right{
 }
