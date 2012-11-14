@@ -13,6 +13,14 @@
 			<input type='submit' value='Post' class='btn-post fr'>
 		</form>
 	</div>
+    <div id = 'tweets'>
+        {% for tweet in tweet_set %}
+            <div class = 'single_tweet'>
+                {{tweet.content}}</br>From {{tweet.user.username}}
+                {{tweet.time_posted}}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
 {% block right %}
