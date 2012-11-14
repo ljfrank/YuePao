@@ -1,11 +1,26 @@
 {% extends "frame.html" %}
+{% block header %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/welcome.css" type="text/css"/>
+{% endblock%}
 {% block content %}
 <div id="welcome">
 	<div id="welcome-login">
 		<div id="login">
-			<form method='post' action='/login/'>{% csrf_token %}
+			<form method='post' action='/login/' id="loginform">{% csrf_token %}
 				{{ form.as_p }}
-				<input type='submit' value='login'>
+				<div id="buttons">
+					<input type="submit" value="Log In" class="btn-login">
+					<a href='/signup/' target="_blank" id="signupbutton">Sign Up</a>
+					<!--
+					<button id="loginbutton">login</button>
+					<button id="signupbutton">signup</button>
+					<script type="text/javascript">
+						$("loginbutton").onClick = function() {
+							$("loginform").submit();
+						}
+					</script>
+					-->
+				</div>
 			</form>
 		</div>
 	</div>
