@@ -13,13 +13,14 @@
 			<input type='submit' value='Post' class='btn-post fr'>
 		</form>
 	</div>
-    <div id = 'tweets'>
-        {% for tweet in tweet_set %}
-            <div class = 'single_tweet'>
-                {{tweet.content}}</br>From {{tweet.user.username}}
-                {{tweet.time_posted}}
-            </div>
-        {% endfor %}
+    <div id='tweets' class='oh'>
+        {% if tweets%}
+            {% for tweet in tweets %}
+            {% include "tweet/_tweet.html" %}
+            {% endfor %}
+        {% else %}
+            Ooooops, no Tweets from this user.
+        {% endif %}
     </div>
 {% endblock %}
 

@@ -17,6 +17,6 @@ def home(request, form=None):
             for tweet in follow.goddess.user.tweet_set.all():
                 all_tweets.append(tweet)
         all_tweets.sort(key = lambda tweet:tweet.time_posted, reverse = True)
-        return render_to_response(HOME_PATH, {'form':form, 'tweet_set':all_tweets}, context_instance=RequestContext(request))
+        return render_to_response(HOME_PATH, {'form':form, 'tweets':all_tweets}, context_instance=RequestContext(request))
     form = LogInForm()
     return render_to_response(WELCOME_PATH, {'form':form}, context_instance=RequestContext(request))
