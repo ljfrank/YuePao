@@ -22,7 +22,7 @@
 	</div>
 	<div class='tweet-cube-newcomment'>
 		<form action='/makeLove/' method="post">{% csrf_token %}
-			<input type='text' name="content" style="width:405px">
+			<input type='text' name="content" style="width:395px">
 			<input type='hidden' name='tweetid' value='{{tweet.id}}'>
 			<input type='submit' value="Comment" class='btn-extras fr'>
 		</form>

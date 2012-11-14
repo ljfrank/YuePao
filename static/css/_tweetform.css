@@ -42,7 +42,6 @@
 /* Tweet Form for post new Tweets */
 #tweetform {
 	overflow:hidden;
-	width:515px;
 	padding:10px 4px 5px 4px;
 	background-color:#D0D3F8;
 	color:#8083A8
@@ -53,5 +52,5 @@
 }
 
 #tweetform label {
-	margin-left:8px;
+	margin-left:13px;
 }
