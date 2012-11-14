@@ -1,0 +1,22 @@
+<div id='user-section'>
+	<div id='user-section-head'>
+		<div id='user-section-img' class='fl'>
+			<img src='http://tp4.sinaimg.cn/2668684791/50/5626936701/1' />
+			{% if showuser != user %}
+				{% if follow == None %}
+				<a href='/follow/{{showuser.id}}/' class='btn-follow fl'>follow</a>
+				{% else %}
+				<a href='/unfollow/{{showuser.id}}/' class='btn-follow fl'>unfollow</a>
+				{% endif %}
+			{% endif %}
+		</div>
+		<div id='user-section-name'>
+			<a href='/user/{{user.id}}'>{{showuser.username}}</a>
+		</div>
+	</div>
+	<ul class='user-extra'>
+		<li><a href='/user/{{user.id}}/followed/'>{{ user.as_diaos_set.all|length }}</a> Following</li>
+		<li><a href='/user/{{user.id}}/fans/'>{{ user.as_goddess_set.all|length }}</a> Followers</li>
+		<li><a href='/user/{{user.id}}/'>{{ user.tweet_set.all|length }}</a> Tweets</li>
+	</ul>
+</div>

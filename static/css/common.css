@@ -115,9 +115,62 @@ a:hover{
 }
 
 #two-row-left{
-	width:550px;
-	margin-right:5px;
+	min-width:535px;
+	margin-right:20px;
 }
 
 #two-row-right{
+}
+
+.btn-post{
+	background: #A0A3C8;
+	border: 1px solid #8083A8;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	color:#ffffff;
+	padding: 3px 12px;
+	min-width:80px;
+	margin-right:11px;
+}
+
+.btn-post:hover{
+	background: #B0B3D8;
+	cursor:pointer;
+}
+
+.btn-follow,.btn-follow:visited{
+	margin-top:4px;
+	background: #088;
+	border: 1px solid #066;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	color:#ffffff;
+	padding: 1px;
+	width:50px;
+	margin-right:11px;
+}
+
+.btn-follow:hover{
+	background: #099;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+.btn-extras{
+	margin:0px 6px 3px 0px;
+	background: #888;
+	border: 1px solid #d2d2d2;
+	font-size: 12px;
+	font-weight: bold;
+	color:#fff;
+	padding: 3px;
+}
+
+.btn-extras:hover{
+	background: #fff;
+	text-decoration:none;
+	color:#444;
+	cursor:pointer;
 }

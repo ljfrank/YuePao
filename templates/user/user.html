@@ -1,18 +1,21 @@
-{% extends "frame.html" %}
-{% block content %}
-<div id='user-prof' class='fl'>
-	<div>{{showuser.username}}</div>
-	{% if showuser != user %}
-		{% if follow == None %}
-		<a href='/follow/{{showuser.id}}/' class='btn'>follow</a>
+{% extends "two-row.html" %}
+{% block header%}
+	<link rel="stylesheet" href="{{STATIC_URL}}css/_user.css" type="text/css"/>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/_tweetform.css" type="text/css"/>
+{% endblock%}
+
+{% block right %}
+	{% include "user/_user_section.html" %}
+{% endblock%}
+
+{% block left%}
+	<div id='tweets' class='oh'>
+		{% if tweets%}
+			{% for tweet in tweets %}
+			{% include "tweet/_tweet.html" %}
+			{% endfor %}
 		{% else %}
-		<a href='/unfollow/{{showuser.id}}/' class='btn'>unfollow</a>
+			Ooooops, no Tweets from this user.
 		{% endif %}
-	{% endif%}
-</div>
-<div id='tweets' class='oh'>
-{% for tweet in tweets %}
-{% include "tweet/tweet.html" %}
-{% endfor %}
-</div>
+	</div>
 {% endblock %}

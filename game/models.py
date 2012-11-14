@@ -10,6 +10,7 @@ class Tweet(models.Model):
     user = models.ForeignKey(User)
     content = models.CharField(max_length=200)
     time_posted = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
     retweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='original_tweet_set')
     original_tweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='retweet_set')
     retweet_count = models.IntegerField(default=0)
@@ -17,11 +18,12 @@ class Tweet(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
-    tweet = models.ForeignKey(Tweet,)
-    time_posted = models.DateTimeField(auto_now_add=True)
-    content = models.CharField(max_length=300)
+    tweet = models.ForeignKey(Tweet)
+    time_commented = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
+    content = models.CharField(max_length=200)
 
 class Follow(models.Model):
-    diao_si = models.ForeignKey(UserProfile, related_name='as_diao_si_set')
+    diaos = models.ForeignKey(UserProfile, related_name='as_diaos_set')
     goddess = models.ForeignKey(UserProfile, related_name='as_goddess_set')
-    date_followed = models.DateTimeField(auto_now_add=True)
+    time_followed = models.DateTimeField(auto_now_add=True)

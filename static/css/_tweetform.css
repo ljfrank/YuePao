@@ -1,28 +1,45 @@
-/* tweet */
+/* Tweet Cube for show Tweets */
 
 .tweet_cube{
-	width: 100%;
-	margin: auto 5px auto 10px;
+	margin: 10px;
 	text-align: left;
-	border-bottom: 1px solid #c0c0c0;
+	padding:10px;
+	border: 1px solid #c0c0c0;
 }
 
-.tweet_picbox{
-	vertical-align: text-top;
+.tweet-cube-img{
+	padding:5px;
+	margin-right:10px;
 }
 
-.tweet{
-	background-color:#eee;
-	border-bottom:1px solid #ccc;
-	margin-bottom:10px;
-	text-align:left;
+.tweet-cube-contents a{
+	font-size:16px;
 }
 
-.tweet span{
-	margin:10px;
+.tweet-cube-content{
+	margin:6px;
+	background:#d0d0d0;
+	padding:4px;
+	font-size:14px;
 }
 
-/* tweetform */
+.tweet-cube-extras{
+	background:#f0f0f0;
+	padding:6px 0px 6px 6px;
+}
+
+.tweet-cube-comments{
+	display:none;
+	background:#f0f0f0;
+	padding:6px 0px 4px 6px;
+}
+
+.tweet-cube-newcomment{
+	background:#f0f0f0;
+	padding:6px 0px 4px 6px;
+}
+
+/* Tweet Form for post new Tweets */
 #tweetform {
 	overflow:hidden;
 	width:515px;
@@ -37,21 +54,4 @@
 
 #tweetform label {
 	margin-left:8px;
-}
-
-.btn-post{
-	background: #A0A3C8;
-	border: 1px solid #8083A8;
-	border-radius: 3px;
-	font-size: 14px;
-	font-weight: bold;
-	color:#ffffff;
-	padding: 3px 12px;
-	min-width:80px;
-	margin-right:11px;
-}
-
-.btn-post:hover{
-	background: #B0B3D8;
-	cursor:pointer;
 }

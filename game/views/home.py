@@ -9,7 +9,7 @@ from django.views.decorators.http import require_GET
 def home(request, form=None):
     if request.user.is_authenticated():
         if form is None:
-		    form = TweetForm()
+            form = TweetForm()
         return render_to_response(HOME_PATH, {'form':form}, context_instance=RequestContext(request))
     form = LogInForm()
     return render_to_response(WELCOME_PATH, {'form':form}, context_instance=RequestContext(request))

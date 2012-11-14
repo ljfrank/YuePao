@@ -1,0 +1,39 @@
+<div class='tweet_cube'>
+	<div class='oh'>
+		<div class='tweet-cube-img fl'>
+			<img src='http://tp4.sinaimg.cn/2668684791/50/5626936701/1' />
+		</div>
+		<div class='tweet-cube-contents oh'>
+			<span><a href="/user/{{tweet.user.id}}/">{{tweet.user.username}}</a> {% if tweet.retweet%}retweeted:{% else %}:{% endif %}</span>
+			<div class="tweet-cube-content"> {{tweet.content}}</div>
+		</div>
+	</div>
+	<div class='tweet-cube-extras'>
+		<button class='btn-extras' onClick='showComments({{tweet.id}})'>Show comments</button><span style='font-size:14px;color:#444'>{{tweet.comment_set.all|length}}</span><span style='color:#666'> comments</span>
+		<button class='btn-extras fr' onClick=''>Star</button>
+		<button class='btn-extras fr' onClick=''>Retweet</button>
+	</div>
+	<div class='tweet-cube-comments tweet-cube-comments-{{tweet.id}}'>
+		{% for comment in tweet.comment_set.all %}
+		<div class='comment'>
+			{{comment.user.username}} : {{comment.content}}
+		</div>
+		{% endfor %}
+	</div>
+	<div class='tweet-cube-newcomment'>
+		<form action='/makeLove/' method="post">{% csrf_token %}
+			<input type='text' name="content" style="width:405px">
+			<input type='hidden' name='tweetid' value='{{tweet.id}}'>
+			<input type='submit' value="Comment" class='btn-extras fr'>
+		</form>
+	</div>
+</div>
+<script>
+	function showComments(id) {
+		if ($(".tweet-cube-comments-"+id).is(":hidden")) {
+			$(".tweet-cube-comments-"+id).slideDown(200);
+		} else {
+			$(".tweet-cube-comments-"+id).slideUp(200);
+		}
+	}
+</script>

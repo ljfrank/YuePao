@@ -51,7 +51,7 @@ def user(request, userID):
         return users(request)
     user = request.user
     try:
-        follow = Follow.objects.get(goddess=showuser.userprofile, diao_si=user.userprofile)
+        follow = Follow.objects.get(goddess=showuser.userprofile, diaos=user.userprofile)
     except Follow.DoesNotExist:
         follow = None
     except UserProfile.DoesNotExist:
@@ -86,10 +86,10 @@ def follow(request, userID):
     except User.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
     try:
-        follow = Follow.objects.get(goddess=goddess.userprofile, diao_si=user.userprofile)
+        follow = Follow.objects.get(goddess=goddess.userprofile, diaos=user.userprofile)
         return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
-        follow = Follow(goddess=goddess.userprofile, diao_si=user.userprofile)
+        follow = Follow(goddess=goddess.userprofile, diaos=user.userprofile)
         follow.save()
     return redirect(request.META.get('HTTP_REFERER', '/'))
     
@@ -101,7 +101,7 @@ def unfollow(request, userID):
     except User.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
     try:
-        follow = Follow.objects.get(goddess=ex_goddess.userprofile, diao_si=user.userprofile)
+        follow = Follow.objects.get(goddess=ex_goddess.userprofile, diaos=user.userprofile)
         follow.delete()
         return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
