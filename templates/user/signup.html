@@ -1,7 +1,0 @@
-{% extends "frame.html" %}
-{% block content %}
-<form method='post' action='/signup/'>{% csrf_token %}
-	{{ form.as_p }}
-	<input type='submit' value='signup'>
-</form>
-{% endblock%}

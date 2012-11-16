@@ -92,7 +92,7 @@ def follow(request, userID):
         follow = Follow(goddess=goddess.userprofile, diaos=user.userprofile)
         follow.save()
     return redirect(request.META.get('HTTP_REFERER', '/'))
-    
+
 @login_required
 def unfollow(request, userID):
     user = request.user

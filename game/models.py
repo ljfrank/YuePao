@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     phone = models.CharField(max_length=20)
+    sex = models.CharField(max_length=1, choices=(('M','Male'),('F','Female')))
+    born_date = models.DateField()
     follows = models.ManyToManyField("self", through='Follow', symmetrical=False)
 
 class Tweet(models.Model):
