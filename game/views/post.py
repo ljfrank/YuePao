@@ -16,7 +16,7 @@ def tweet(request):
     if request.method == 'POST':
         form = TweetForm(request.POST)
         if form.is_valid():
-            tweet = Tweet(user=request.user, content=form.cleaned_data['tweet'])
+            tweet = Tweet(user=request.user.userprofile, content=form.cleaned_data['tweet'])
             tweet.save()
     return redirect('/')
 

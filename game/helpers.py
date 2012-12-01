@@ -1,3 +1,5 @@
+from models import *
+
 def getFollows(userID):
     user = User.objects.get(id=userID).userprofile
     try:

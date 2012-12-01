@@ -11,6 +11,9 @@ def home(request, form=None):
         if form is None:
             form = TweetForm()
         user = request.user;
-        return render_to_response(HOME_PATH, {'form':form}, context_instance=RequestContext(request))
+        follows = getFollows(user.id)
+        follows.append(user.userprofile)
+        tweets = Tweet.objects.filter(user__in=follows)
+        return render_to_response(HOME_PATH, {'form':form, 'tweets':tweets}, context_instance=RequestContext(request))
     form = LogInForm()
     return render_to_response(WELCOME_PATH, {'form':form}, context_instance=RequestContext(request))
