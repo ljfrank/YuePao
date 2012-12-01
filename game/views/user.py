@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import logout as authlogout
 from django.contrib.auth.decorators import login_required
 from game.models import UserProfile
+from django.http import HttpResponse
 
 @login_required
 def followed(request, userID):
@@ -108,3 +109,32 @@ def unfollow(request, userID):
         return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
+
+@login_required
+def uploadIcon(request):
+    user = request.user
+    if request.method == 'POST':
+        form = UploadIconForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = UserProfile.objects.get(user=user)
+            profile.icon = request.FILES['icon']
+            profile.save()
+            return redirect('/');       #Upload avatar successfully.
+    else:
+        form = UploadIconForm()
+    return render_to_response('user/_upload_head_photo.html', {'form': form, 'user': request.user}, context_instance=RequestContext(request))
+
+def showIcon(request, userID):
+    try:
+        user = User.objects.get(id = userID)
+        profile = UserProfile.objects.get(user=user)
+        if (profile.icon):
+            icon = profile.icon
+            response = HttpResponse(icon, content_type='image/jpeg')
+            return response
+    except User.DoesNotExist:
+        return redirect('/')    #here we may need to redirect to an error page.
+    except UserProfile.DoesNotExist:
+        return redirect('/')    #here we may need to redirect to an error page.
+    return redirect('http://tp4.sinaimg.cn/2668684791/50/5626936701/1')     #redirect to the default avatar
+

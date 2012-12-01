@@ -15,6 +15,8 @@ urlpatterns += patterns('game.views.user',
     url(r'^user/(?P<userID>\d+)/fans/?$', 'fans'),
     url(r'^follow/(?P<userID>\d+)/?$', 'follow'),
     url(r'^unfollow/(?P<userID>\d+)/?$', 'unfollow'),
+    url(r'^user/upload/icon/?$', 'uploadIcon'),
+    url(r'^user/(?P<userID>\d+)/icon/?$', 'showIcon'),
 )
 
 urlpatterns += patterns('game.views.post',

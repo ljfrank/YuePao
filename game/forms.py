@@ -48,6 +48,9 @@ class SettingsForm(forms.Form):
         profile.save()
         return user
 
+class UploadIconForm(forms.Form):
+    icon = forms.ImageField(required=True, max_length=2097152)
+
 class LogInForm(forms.Form):
     username = forms.CharField(label='username', required=True, max_length=20)
     password = forms.CharField(label='password', widget=forms.PasswordInput, required=True, max_length=20)

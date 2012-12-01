@@ -8,6 +8,7 @@ class UserProfile(models.Model):
     sex = models.CharField(max_length=1)
     born_date = models.DateField(default=datetime.date.today)
     follows = models.ManyToManyField("self", through='Follow', symmetrical=False)
+    icon = models.ImageField(upload_to='headphotos',max_length=2097152)
 
 class Tweet(models.Model):
     user = models.ForeignKey(UserProfile)

@@ -1,0 +1,7 @@
+<div class='retweet'>
+    This page is only for temporary use. <br />
+    <form method='post' action='/user/upload/icon' enctype='multipart/form-data'>{% csrf_token %}
+        {{ form.as_p }}
+	    <input type='submit' value='submit'>
+    </form>
+</div>
