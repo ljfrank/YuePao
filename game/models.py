@@ -5,12 +5,12 @@ import datetime
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     phone = models.CharField(max_length=20)
-    sex = models.CharField(max_length=1, choices=(('M','Male'),('F','Female')))
+    sex = models.CharField(max_length=1)
     born_date = models.DateField(default=datetime.date.today)
     follows = models.ManyToManyField("self", through='Follow', symmetrical=False)
 
 class Tweet(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(UserProfile)
     content = models.CharField(max_length=200)
     time_posted = models.DateTimeField(auto_now_add=True)
     time_updated = models.DateTimeField(auto_now=True)
@@ -20,7 +20,7 @@ class Tweet(models.Model):
     deleted = models.BooleanField(default=False)
 
 class Comment(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(UserProfile)
     tweet = models.ForeignKey(Tweet)
     time_commented = models.DateTimeField(auto_now_add=True)
     time_updated = models.DateTimeField(auto_now=True)

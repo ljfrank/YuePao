@@ -11,11 +11,11 @@ from game.models import UserProfile
 
 @login_required
 def followed(request, userID):
-    requested_user = User.objects.get(id = userID)
-    user_profile = UserProfile.objects.get(user = requested_user)
-    follows = Follow.objects.filter(diao_si = user_profile)
-    user_profile_list = [follow.goddess for follow in follows]
-    return users(request, user_profile_list)
+    return users(request, getFollows(userID))
+
+@login_required
+def fans(request, userID):
+    return users(request, getFans(userID))
 
 def login(request):
     if request.user.is_authenticated():
@@ -46,29 +46,29 @@ def signup(request):
 @login_required
 def user(request, userID):
     try:
-        showuser = User.objects.get(id=userID)
+        showuser = User.objects.get(id=userID).userprofile
+        user = request.user.userprofile
     except User.DoesNotExist:
         return users(request)
-    user = request.user
+    except UserProfile.DoesNotExist:
+        return users(request)
     try:
-        follow = Follow.objects.get(goddess=showuser.userprofile, diaos=user.userprofile)
+        follow = Follow.objects.get(goddess=showuser, diaos=user)
     except Follow.DoesNotExist:
         follow = None
-    except UserProfile.DoesNotExist:
-        return users(request);
     tweets = showuser.tweet_set.all()
-    return render_to_response(USER_PATH, {'showuser':showuser, 'tweets':tweets, 'user':request.user, 'follow':follow}, context_instance=RequestContext(request))
+    return render_to_response(USER_PATH, {'showuser':showuser.user, 'tweets':tweets, 'user':request.user, 'follow':follow}, context_instance=RequestContext(request))
 
 @login_required
 def settings(request):
     if request.method == 'GET':
-        form = ChangePWForm()
+        form = SettingsForm()
         return render_to_response(SETTING_PATH, {'form':form}, context_instance=RequestContext(request))
     if request.method == 'POST':
-        form = ChangePWForm(request.POST)
+        form = SettingsForm(request.POST)
         if form.is_valid():
-            user.set_password(form.cleaned_data['password'])
-            user.save()
+            form.save(request)
+            return redirect('/')
         return render_to_response(SETTING_PATH, {'form':form}, context_instance=RequestContext(request))
     return redirect('/')
 
@@ -80,41 +80,31 @@ def users(request, user_list = None):
 
 @login_required
 def follow(request, userID):
-    user = request.user
     try:
-        goddess = User.objects.get(id=userID)
-    except User.DoesNotExist:
+        user = request.user.userprofile
+        goddess = User.objects.get(id=userID).userprofile
+        if user==goddess:
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+    except User.DoesNotExist, UserProfile.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
     try:
-        follow = Follow.objects.get(goddess=goddess.userprofile, diaos=user.userprofile)
+        follow = Follow.objects.get(goddess=goddess, diaos=user)
         return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
-        follow = Follow(goddess=goddess.userprofile, diaos=user.userprofile)
+        follow = Follow(goddess=goddess, diaos=user)
         follow.save()
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 @login_required
 def unfollow(request, userID):
-    user = request.user
     try:
-        ex_goddess = User.objects.get(id=userID)
-    except User.DoesNotExist:
+        user = request.user.userprofile
+        goddess = User.objects.get(id=userID).userprofile
+    except User.DoesNotExist, UserProfile.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
     try:
-        follow = Follow.objects.get(goddess=ex_goddess.userprofile, diaos=user.userprofile)
+        follow = Follow.objects.get(goddess=goddess, diaos=user)
         follow.delete()
         return redirect(request.META.get('HTTP_REFERER', '/'))
     except Follow.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
-
-@login_required
-def fans(request, userID):
-    user = User.objects.get(id = userID)
-    try:
-        fans = Follow.objects.filter(goddess = user.userprofile)
-        fansProfiles = []
-        for fan in fans:
-            fansProfiles.append(fan.diao_si)
-    except Follow.DoesNotExist:
-        fansProfiles = None
-    return users(request, fansProfiles)

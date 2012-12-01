@@ -28,8 +28,25 @@ class SignUpForm(forms.Form):
         login(request, user)
         return user
 
-class ChangePWForm(forms.Form):
-    password = forms.CharField(label='password', widget=forms.PasswordInput, required=True, min_length=6, max_length=20)
+class SettingsForm(forms.Form):
+    oldpassword = forms.CharField(label='Old password', widget=forms.PasswordInput, required=True, min_length=6, max_length=20)
+    newpassword1 = forms.CharField(label='New password', widget=forms.PasswordInput, required=True, min_length=6, max_length=20)
+    newpassword2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput, required=True, min_length=6, max_length=20)
+    from django.forms.extras.widgets import SelectDateWidget
+    borndate = forms.DateField(label='Born Date', widget=SelectDateWidget(years=range(1930,2012)))
+    sex = forms.ChoiceField(label='Sex', widget=forms.Select, required=True, choices=(('M','Male'),('F','Female')))
+    phone = forms.CharField(label='Phone', widget=forms.TextInput)
+
+    def save(self, request):
+        user = request.user
+        user.password = self.cleaned_data.get('newpassword1')
+        user.save()
+        profile = UserProfile.objects.get(user=user)
+        profile.sex = self.cleaned_data.get('xex')
+        profile.born_date = self.cleaned_data.get('borndate')
+        profile.phone = self.cleaned_data.get('phone')
+        profile.save()
+        return user
 
 class LogInForm(forms.Form):
     username = forms.CharField(label='username', required=True, max_length=20)
