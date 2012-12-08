@@ -4,7 +4,7 @@
 			<img src='http://tp4.sinaimg.cn/2668684791/50/5626936701/1' />
 		</div>
 		<div class='tweet-cube-contents oh'>
-			<span><a href="/user/{{tweet.user.id}}/">{{tweet.user.username}}</a> {% if tweet.retweet%}retweeted:{% else %}:{% endif %}</span>
+			<span><a href="/user/{{tweet.user.user.id}}/">{{tweet.user.user.username}}</a> {% if tweet.retweet%}retweeted:{% else %}:{% endif %}</span>
 			<div class="tweet-cube-content"> {{tweet.content}}</div>
 		</div>
 	</div>
@@ -16,7 +16,7 @@
 	<div class='tweet-cube-comments tweet-cube-comments-{{tweet.id}}'>
 		{% for comment in tweet.comment_set.all %}
 		<div class='comment'>
-			{{comment.user.username}} : {{comment.content}}
+			{{comment.user.user.username}} : {{comment.content}}
 		</div>
 		{% endfor %}
 	</div>

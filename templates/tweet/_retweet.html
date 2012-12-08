@@ -1,7 +1,7 @@
 <div class='retweet'>
     This page is only for temporary use. <br />
     Original Tweet: <br />
-	<span>{{original_tweet.user.username}} :</span><span>{{original_tweet.content}}</span> <br />
+	<span>{{original_tweet.user.user.username}} :</span><span>{{original_tweet.content}}</span> <br />
     Input:
     <form method='post' action='/tweet/{{retweet.id}}/retweet/'>{% csrf_token %}
     <textarea name="tweet">{{content}}</textarea>
