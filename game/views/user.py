@@ -116,7 +116,7 @@ def uploadIcon(request):
     if request.method == 'POST':
         form = UploadIconForm(request.POST, request.FILES)
         if form.is_valid():
-            profile = UserProfile.objects.get(user=user)
+            profile = user.userprofile 
             profile.icon = request.FILES['icon']
             profile.save()
             return redirect('/');       #Upload avatar successfully.
@@ -126,12 +126,9 @@ def uploadIcon(request):
 
 def showIcon(request, userID):
     try:
-        user = User.objects.get(id = userID)
-        profile = UserProfile.objects.get(user=user)
+        profile = User.objects.get(id = userID).userprofile 
         if (profile.icon):
-            icon = profile.icon
-            response = HttpResponse(icon, content_type='image/jpeg')
-            return response
+            return HttpResponse(profile.icon, content_type='image/jpeg')
     except User.DoesNotExist:
         return redirect('/')    #here we may need to redirect to an error page.
     except UserProfile.DoesNotExist:
