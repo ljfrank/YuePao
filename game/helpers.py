@@ -4,14 +4,16 @@ def getFollows(userID):
     user = User.objects.get(id=userID).userprofile
     try:
         follows = list(Follow.objects.filter(diaos=user))
+        goddesses = [follow.goddess for follow in follows]
     except Follow.DoesNotExist:
-        follows = []
-    return follows
+        goddesses = []
+    return goddesses
 
 def getFans(userID):
     user = User.objects.get(id=userID).userprofile
     try:
-        fans = list(Follow.objects.filter(goddess=user))
+        follows = list(Follow.objects.filter(goddess=user))
+        diaos = [follow.diaos for follow in follows]
     except Follow.DoesNotExist:
-        fans = []
-    return fans
+        diaos = []
+    return diaos
