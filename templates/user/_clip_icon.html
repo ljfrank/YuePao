@@ -7,7 +7,7 @@
                         Click and drag on the image to select an area. 
                     </p>
                     <div class="frame" style="margin: 0 0.3em;">
-                        <img id="icon_preview" src="/user/{{user.id}}/{{photoName}}"/>
+                        <img id="icon_preview" src="/user/{{user.id}}/{{photoName}}" style="max-height: 600px; max-width: 600px;"/>
                     </div>
                 </div>
             </td>    
@@ -18,7 +18,7 @@
                     </p>
                     <div class="frame" style="margin: 0 1em; width: 100px; height: 100px;">
                         <div style="width: 100px; height: 100px; overflow: hidden;">
-                            <img id="preview" src="/user/{{user.id}}/{{photoName}}" style="width: 100px; height: 100px;" />
+                            <img id="preview" src="/user/{{user.id}}/{{photoName}}" style="width: 100px; height: 100px; max-height: 600px; max-width: 600px;" />
                         </div>
                     </div>
                 </div>
@@ -56,6 +56,8 @@
              width: $('#icon_preview').data('width'),
              height: $('#icon_preview').data('height'),
              photo_name: '{{photoName}}',
+             photo_width: $('#icon_preview').width(),
+             photo_height: $('#icon_preview').height(),
          },
          function (data) {
              $.fancybox.hideLoading();

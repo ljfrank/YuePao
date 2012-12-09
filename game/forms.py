@@ -57,6 +57,8 @@ class ClipPhotoForm(forms.Form):
     width = forms.IntegerField(required=True, min_value=0)
     height = forms.IntegerField(required=True, min_value=0)
     photo_name = forms.CharField(required=True, max_length=50)
+    photo_width = forms.IntegerField(required=True, min_value=0)
+    photo_height = forms.IntegerField(required=True, min_value=0)
 
 class LogInForm(forms.Form):
     username = forms.CharField(label='username', required=True, max_length=20)

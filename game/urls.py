@@ -32,5 +32,5 @@ urlpatterns += patterns('game.views.photo',
     url(r'^upload/icon/?$', 'uploadIcon'),
     url(r'^user/(?P<userID>\d+)/icon/?$', 'showIcon'),
     url(r'^user/(?P<userID>\d+)/(?P<photoName>[\w.-]+)/?$', 'showPhoto'),
-    #url(r'^upload/photo/?$', 'uploadPhoto'),
+    url(r'^upload/photo/?$', 'uploadPhoto'),
 )
