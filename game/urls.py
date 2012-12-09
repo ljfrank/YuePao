@@ -15,8 +15,6 @@ urlpatterns += patterns('game.views.user',
     url(r'^user/(?P<userID>\d+)/fans/?$', 'fans'),
     url(r'^follow/(?P<userID>\d+)/?$', 'follow'),
     url(r'^unfollow/(?P<userID>\d+)/?$', 'unfollow'),
-    url(r'^user/upload/icon/?$', 'uploadIcon'),
-    url(r'^user/(?P<userID>\d+)/icon/?$', 'showIcon'),
 )
 
 urlpatterns += patterns('game.views.post',
@@ -26,4 +24,13 @@ urlpatterns += patterns('game.views.post',
     url(r'^tweet/(?P<tweetID>\d+)/retweet/?$', 'retweet'),
     url(r'^buyPorn/?$', 'watch'),
     url(r'^makePornMovie/?$', 'star'),
+)
+
+urlpatterns += patterns('game.views.photo',
+    url(r'^upload/icon/preview/(?P<photoName>[\w.-]+)/?$', 'iconPreview'),
+    url(r'^upload/icon/preview/?$', 'iconPreview'),
+    url(r'^upload/icon/?$', 'uploadIcon'),
+    url(r'^user/(?P<userID>\d+)/icon/?$', 'showIcon'),
+    url(r'^user/(?P<userID>\d+)/(?P<photoName>[\w.-]+)/?$', 'showPhoto'),
+    #url(r'^upload/photo/?$', 'uploadPhoto'),
 )

@@ -1,0 +1,70 @@
+<div id="div_clip_icon">
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <p style="font-family: serif; font-style: italic; color: #666;">
+                        Click and drag on the image to select an area. 
+                    </p>
+                    <div class="frame" style="margin: 0 0.3em;">
+                        <img id="icon_preview" src="/user/{{user.id}}/{{photoName}}"/>
+                    </div>
+                </div>
+            </td>    
+            <td valign="top">
+                <div style="float: left;">
+                    <p style="font-size: 110%; font-weight: bold; padding-left: 0.1em;">
+                        Selection Preview
+                    </p>
+                    <div class="frame" style="margin: 0 1em; width: 100px; height: 100px;">
+                        <div style="width: 100px; height: 100px; overflow: hidden;">
+                            <img id="preview" src="/user/{{user.id}}/{{photoName}}" style="width: 100px; height: 100px;" />
+                        </div>
+                    </div>
+                </div>
+            </td>             
+        </tr>
+        <tr height="5px">
+        </tr>
+        <tr>
+            <td align="center">
+                <input id="submitButton" type='button' class="btn-post" value='submit' onclick="return submit();">
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    var _height = {{ height }};
+    var _width =  {{ width }};
+
+    $(function(){
+        $(".frame").css({
+            background: '#fff',
+            padding: '0.8em',
+            border: 'solid 2px #ddd',
+        });
+    });
+
+    function submit() {
+        $.fancybox.showLoading();
+        $.post(
+         "/upload/icon",
+         {
+             x: $('#icon_preview').data('x'),
+             y: $('#icon_preview').data('y'),
+             width: $('#icon_preview').data('width'),
+             height: $('#icon_preview').data('height'),
+             photo_name: '{{photoName}}',
+         },
+         function (data) {
+             $.fancybox.hideLoading();
+             if (data.success)
+                 alert('Your icon has been modified successfully!');
+             else if (data.error)
+                 alert(data.error);
+             $.fancybox.close(true);
+         }, "json");
+    }
+
+</script>

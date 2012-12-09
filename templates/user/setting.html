@@ -1,7 +1,32 @@
 {% extends "frame.html" %}
+{% block header %}
+    <link rel="stylesheet" href="{{STATIC_URL}}css/jquery.imgareaselect/imgareaselect-animated.css" type="text/css"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/jquery.fancybox/jquery.fancybox.css?v=2.1.3" type="text/css"/>
+    <script src="{{STATIC_URL}}js/jquery.form.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.imgareaselect.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.fancybox.pack.js?v=2.1.3"></script>
+{% endblock %}
 {% block content %}
+<a href="/upload/icon" class="fancybox fancybox.ajax">Upload Icon</a>
 <form method='post' action='/settings/'>{% csrf_token %}
 	{{ form.as_p }}
 	<input type='submit' value='change'>
 </form>
+<script type="text/ecmascript">
+    $(document).ready(function () {
+        $(".fancybox").fancybox({
+            maxWidth: 800,
+            maxHeight: 600,
+            width: '70%',
+            height: '70%',
+            scrolling: 'no',
+            transitionIn: 'fade',
+            transitionOut: 'fade',
+            fitToView: false,
+            autoSize: false,
+            closeClick: false,
+            beforeClose: null,
+        });
+    });
+</script>
 {% endblock%}

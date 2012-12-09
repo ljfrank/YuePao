@@ -110,28 +110,3 @@ def unfollow(request, userID):
     except Follow.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
 
-@login_required
-def uploadIcon(request):
-    user = request.user
-    if request.method == 'POST':
-        form = UploadIconForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile = user.userprofile 
-            profile.icon = request.FILES['icon']
-            profile.save()
-            return redirect('/');       #Upload avatar successfully.
-    else:
-        form = UploadIconForm()
-    return render_to_response('user/_upload_head_photo.html', {'form': form, 'user': request.user}, context_instance=RequestContext(request))
-
-def showIcon(request, userID):
-    try:
-        profile = User.objects.get(id = userID).userprofile 
-        if (profile.icon):
-            return HttpResponse(profile.icon, content_type='image/jpeg')
-    except User.DoesNotExist:
-        return redirect('/')    #here we may need to redirect to an error page.
-    except UserProfile.DoesNotExist:
-        return redirect('/')    #here we may need to redirect to an error page.
-    return redirect('http://tp4.sinaimg.cn/2668684791/50/5626936701/1')     #redirect to the default avatar
-

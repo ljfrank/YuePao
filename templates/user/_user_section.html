@@ -1,7 +1,7 @@
 <div id='user-section'>
 	<div id='user-section-head'>
 		<div id='user-section-img' class='fl'>
-            <img src='/user/{{showuser.id}}/icon'>
+            <img src='/user/{{showuser.id}}/icon' height="50px" width="50px" />
 			{% if showuser != user %}
 				{% if follow == None %}
 				<a href='/follow/{{showuser.id}}/' class='btn-follow fl'>follow</a>

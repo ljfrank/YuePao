@@ -1,7 +1,109 @@
-<div class='retweet'>
-    This page is only for temporary use. <br />
-    <form method='post' action='/user/upload/icon' enctype='multipart/form-data'>{% csrf_token %}
-        {{ form.as_p }}
-	    <input type='submit' value='submit'>
-    </form>
+<div id="id_upload_icon">
+        <div class="upload_class">
+            <p>
+                Upload User Icon
+            </p>
+            <form id='upload_form' action='/upload/icon/preview' method='post' enctype='multipart/form-data'> {% csrf_token %}
+            <p>
+                <input type="file" name="photo" id="icon_file" style="display:none;" accept="image/gif, image/jpeg" onchange="upload()"/>
+                <input type="button" class="btn-post fl" value="Upload" onclick=photo.click() />
+            </p>
+            </form>
+        </div>
+        <div style="display:none">
+            <div id="div_clip_icon"></div>
+        </div>
 </div>
+<script type="text/javascript">
+    
+    $(function () {
+        $("#icon_file").change(function () {
+            if ($("#icon_file").val() != "") {
+                check = checkFileExt($("#icon_file").val());
+                if (check == false) return false;
+            }
+            $("#icon_file").change(function () { alert('The request is currently being processed!'); return false; });
+            $("#icon_file").click(function () { alert('The request is currently being processed!'); return false; });
+            $.fancybox.showLoading();
+            $("#upload_form").ajaxSubmit({
+                dataType: 'json',
+                beforeSend: function () {
+                    $.fancybox.showLoading();
+                },
+                success: function (data) {
+                    $.fancybox.hideLoading();
+                    if (data.name)
+                        $.fancybox({
+                            href: '/upload/icon/preview/'+data.name,
+                            scrolling: 'no',
+                            transitionIn: 'fade',
+                            transitionOut: 'fade',
+                            type: 'ajax',
+                            autoSize: 'true',
+                            fitToView: 'true',
+                            onUpdate: start_clip,
+                            beforeClose: stop_clip,
+                        });
+                    else if (data.error) {
+                        alert(data.error);
+                    }
+                },
+                error: function (xhr) {
+                    $.fancybox.hideLoading();
+                    $("#div_clip_icon").html(xhr.responseText);
+                    $.fancybox({
+                        href: '#div_clip_icon',
+                        scrolling: 'no',
+                        transitionIn: 'fade',
+                        transitionOut: 'fade',
+                        onClosed: function () { $('#div_clip_icon').html(''); },
+                    });
+                    //$("#msg").html(xhr.responseText);
+                }
+            });
+        });
+    });
+
+    function checkFileExt(obj) {
+        if (/\.(jpg|jpeg|bmp|png|gif)$/i.test(obj)) {
+            return true;
+        } else {
+            alert('Please upload an image file!');
+            return false;
+        }
+    }
+
+    var imgAreaSelect;
+
+    function start_clip() {
+        imgAreaSelect = $('#icon_preview').imgAreaSelect({
+            handles: true, aspectRatio: '1:1', hide: false, show: true,
+            maxHeight: 500, maxWidth: 500, minHeight: 100, minWidth: 100,
+            x1: 0, y1: 0, x2: 100, y2: 100,
+            instance: true, persistent: true,
+            onSelectEnd: preview,
+        });
+        imgAreaSelect.select(0, 0, 100, 100, true)
+    }
+
+    function stop_clip() {
+        imgAreaSelect.cancelSelection();
+        $('#div_clip_icon').html('');
+    }
+
+    function preview(img, selection) {
+        var scaleX = 100 / (selection.width || 1);
+        var scaleY = 100 / (selection.height || 1);
+        $('#preview').css({
+            width: Math.round(scaleX * _width) + 'px',
+            height: Math.round(scaleY * _height) + 'px',
+            marginLeft: '-' + Math.round(scaleX * selection.x1) + 'px',
+            marginTop: '-' + Math.round(scaleY * selection.y1) + 'px'
+        });
+        $('#icon_preview').data('x', selection.x1);
+        $('#icon_preview').data('y', selection.y1);
+        $('#icon_preview').data('width', selection.width);
+        $('#icon_preview').data('height', selection.height);
+    }
+
+</script>

@@ -48,8 +48,15 @@ class SettingsForm(forms.Form):
         profile.save()
         return user
 
-class UploadIconForm(forms.Form):
-    icon = forms.ImageField(required=True, max_length=2097152)
+class UploadPhotoForm(forms.Form):
+    photo = forms.ImageField(required=True, max_length=2097152)
+
+class ClipPhotoForm(forms.Form):
+    x = forms.IntegerField(required=True, min_value=0)
+    y = forms.IntegerField(required=True, min_value=0)
+    width = forms.IntegerField(required=True, min_value=0)
+    height = forms.IntegerField(required=True, min_value=0)
+    photo_name = forms.CharField(required=True, max_length=50)
 
 class LogInForm(forms.Form):
     username = forms.CharField(label='username', required=True, max_length=20)
