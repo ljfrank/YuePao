@@ -77,6 +77,13 @@ def settings(request):
 def users(request, user_list = None):
     if user_list == None:
         user_list = UserProfile.objects.all()
+	for u in user_list:
+		try:
+			follow = Follow.objects.get(goddess=u, diaos=request.user.userprofile)
+		except Follow.DoesNotExist:
+			follow = None
+		
+		u.follow = follow
     return render_to_response(SHOWUSER_PATH, {'user_profiles':user_list, 'user':request.user}, context_instance=RequestContext(request))
 
 @login_required

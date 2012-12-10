@@ -96,10 +96,32 @@ a{
 }
 
 .usernote{
-	margin-top:32px;
-	width:800px;
-	height:20px;
+	width:@content-width;
+	margin-top: 5px;
+	height:@icon-size + 5;
+	position:relative;
 	border-bottom: 1px solid #888888;
+	.shortcut{
+		width:@icon-size;
+		height:@icon-size;
+		position:absolute;
+		top:0px;
+		left:10px;
+	}
+	.description{
+		postion:absolute;
+		margin-left: @icon-size + 20px;
+		float: left;
+		text-align:left;
+		#username, span{
+			display: block;
+		}
+	}
+	.actions{
+		position:absolute;
+		top:0px;
+		right:0px;
+	}
 }
 
 #two-row-left{
@@ -136,7 +158,7 @@ a{
 	font-weight: bold;
 	color:#ffffff;
 	padding: 1px;
-	width:50px;
+	width:60px;
 	margin-right:11px;
 	&:hover{
 		background: #099;

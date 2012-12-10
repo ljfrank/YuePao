@@ -1,0 +1,25 @@
+<div class="usernote fl">
+	<div class="shortcut">
+		<img src="/user/{{u.user.id}}/icon" />
+	</div>
+	<div class="description">
+		<a id="username" href="/user/{{u.user.id}}/">{{u.user.username}}</a>
+		{% if u.sex == '' %}
+			<span>Sex: Secret</span>
+		{% else %}
+			<span>Sex: {{u.sex}}</span>
+		{% endif %}
+		{% if u.born_date == '' %}
+			<span>Birthday: Secret</span>
+		{% else %}
+			<span>Birthday: {{u.born_date}}</span>
+		{% endif %}
+	</div>
+	<div class="actions">
+		{% if u.follow == None %}
+			<a href='/follow/{{showuser.id}}/' class='btn-follow fl'>follow</a>
+		{% else %}
+			<a href='/unfollow/{{showuser.id}}/' class='btn-follow fl'>unfollow</a>
+		{% endif %}
+	</div>
+</div>
