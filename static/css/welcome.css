@@ -1,65 +1,8 @@
-#welcome{
-	background-color: #d0d0d0;
-	min-height:600px;
-}
-
-#login{
-	width:300px;
-	height:180px;
-	background-color:#ffffff;
-	-webkit-box-shadow:0px 0px 15px black;
-	-moz-box-shadow:0px 0px 15px black;
-	filter:progid:DXImageTransform.Microsoft.Shadow(color=black,direction=0,strength=15);
-	box-shadow:0px 0px 15px black;
-	position:absolute;
-	top:300px;
-	right:80px;
-	z-index:1;
-}
-
-#login form{
-	margin-top:55px;
-}
-
-.center{
-	width:940px;
-}
-
-#loginbutton{
-	width:150px;
-	height:50px;
-	background-color:#00ff00;
-}
-
-.btn-login{
-	background: #6FA156;
-	border: 1px solid #528641;
-	border-radius: 3px;
-	font-size: 14px;
-	font-weight: bold;
-	color:#ffffff;
-	padding: 3px 12px;
-	min-width:80px;
-}
-
-.btn-login:hover{
-	cursor:pointer;
-	background:#3FA156;
-}
-
-#signupbutton{
-	background: #9FA156;
-	border: 1px solid #828641;
-	border-radius: 3px;
-	font-size: 14px;
-	font-weight: bold;
-	color:#ffffff;
-	padding: 3px 12px;
-	min-width:80px;
-	margin-left:14px;
-}
-
-#signupbutton:hover{
-	text-decoration:none;
-	background: #CFA156;
-}
+#welcome{min-height:600px;}
+#login{width:300px;height:180px;background-color:#ffffff;-webkit-box-shadow:0px 0px 15px black;-moz-box-shadow:0px 0px 15px black;filter:progid:dximagetransform.microsoft.shadow(color=#000000, direction=0, strength=15);box-shadow:0px 0px 15px black;position:absolute;top:300px;right:80px;z-index:1;}#login form{margin-top:55px;}
+#welcome_logo{position:absolute;left:50px;top:100px;}
+#welcome_slogan{position:absolute;left:170px;top:350px;}
+.center{width:940px;}
+#loginbutton{width:150px;height:50px;background-color:#00ff00;}
+.btn-login{background:#6FA156;border:1px solid #528641;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;}.btn-login:hover{cursor:pointer;background:#3fa156;}
+#signupbutton{background:#9FA156;border:1px solid #828641;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-left:14px;}#signupbutton:hover{text-decoration:none;background:#CFA156;}

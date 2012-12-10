@@ -5,6 +5,12 @@
 {% block content %}
 <div id="welcome">
 	<div id="welcome-login">
+		<div id="welcome_logo">
+			<img src="{{STATIC_URL}}images/logo2.png" />
+		</div>
+		<div id="welcome_slogan">
+			<img src="{{STATIC_URL}}images/slogan.png" />
+		</div>
 		<div id="login">
 			<form method='post' action='/login/' id="loginform">{% csrf_token %}
 				{{ form.as_p }}
