@@ -15,8 +15,8 @@
 		</div>
 	</div>
 	<ul class='user-extra'>
-		<li><a href='/user/{{user.id}}/followed/'>{{ user.userprofile.as_diaos_set.all|length }}</a> Following</li>
-		<li><a href='/user/{{user.id}}/fans/'>{{ user.userprofile.as_goddess_set.all|length }}</a> Followers</li>
-		<li><a href='/user/{{user.id}}/'>{{ user.userprofile.tweet_set.all|length }}</a> Tweets</li>
+		<li><a href='/user/{{user.id}}/followed/'>{{ user.userprofile.as_diaos_set.all|length }} Following</a></li>
+		<li><a href='/user/{{user.id}}/fans/'>{{ user.userprofile.as_goddess_set.all|length }} Followers</a></li>
+		<li><a href='/user/{{user.id}}/'>{{ user.userprofile.tweet_set.all|length }} Tweets</a></li>
 	</ul>
 </div>

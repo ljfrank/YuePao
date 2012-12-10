@@ -1,56 +1,13 @@
-/* Tweet Cube for show Tweets */
-
-.tweet_cube{
-	margin: 10px;
-	text-align: left;
-	padding:10px;
-	border: 1px solid #c0c0c0;
-}
-
-.tweet-cube-img{
-	padding:5px;
-	margin-right:10px;
-}
-
-.tweet-cube-contents a{
-	font-size:16px;
-}
-
-.tweet-cube-content{
-	margin:6px;
-	background:#d0d0d0;
-	padding:4px;
-	font-size:14px;
-}
-
-.tweet-cube-extras{
-	background:#f0f0f0;
-	padding:6px 0px 6px 6px;
-}
-
-.tweet-cube-comments{
-	display:none;
-	background:#f0f0f0;
-	padding:6px 0px 4px 6px;
-}
-
-.tweet-cube-newcomment{
-	background:#f0f0f0;
-	padding:6px 0px 4px 6px;
-}
-
-/* Tweet Form for post new Tweets */
-#tweetform {
-	overflow:hidden;
-	padding:10px 4px 5px 4px;
-	background-color:#D0D3F8;
-	color:#8083A8
-}
-
-#tweetform textarea{
-	rows:3;
-}
-
-#tweetform label {
-	margin-left:13px;
-}
+.button1{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.button1:hover{background:#B0B3D8;cursor:pointer;}
+.button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
+.button2:hover{background:#CFA156;}
+.tweet_cube{margin:10px;text-align:left;padding:10px;border:1px solid #c0c0c0;}
+.tweet-cube-img{padding:5px;margin-right:10px;}
+.tweet-cube-contents a{font-size:16px;}
+.tweet-cube-content{margin:6px;background:#d0d0d0;padding:4px;font-size:14px;}
+.tweet-cube-extras{background:#f0f0f0;padding:6px 0px 6px 6px;}
+.tweet-cube-comments{display:none;background:#f0f0f0;padding:6px 0px 4px 6px;}
+.tweet-cube-newcomment{background:#f0f0f0;padding:6px 0px 4px 6px;}
+#tweetform{overflow:hidden;padding:10px 4px 5px 4px;margin:2px;background-color:#ffffff;color:#8083A8;-webkit-box-shadow:2px 2px 2px #262626;-moz-box-shadow:2px 2px 2px #262626;filter:progid:dximagetransform.microsoft.shadow(color=#262626, direction=0, strength=2px);box-shadow:2px 2px 2px #262626;}#tweetform textarea{rows:3;}
+#tweetform label{margin-left:13px;}
+#id_tweet{width:700px;}

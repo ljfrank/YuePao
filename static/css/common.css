@@ -1,3 +1,6 @@
+.button1{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.button1:hover{background:#B0B3D8;cursor:pointer;}
+.button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
+.button2:hover{background:#CFA156;}
 body{margin:0;background-color:#ffffff;font-family:Microsoft YaHei,Segoe UI,Arial;font-size:12px;}
 a{color:#47729d;text-decoration:none;}a:hover{cursor:pointer;text-decoration:underline;}
 #header{width:100%;background-image:-webkit-linear-gradient(top, #333333, #222222);background-image:-o-linear-gradient(top, #333333, #222222);background-image:linear-gradient(top, #333333, #222222);position:fixed;height:40px;top:0;z-index:1000;}#header #logo{padding-top:10px;float:left;font-weight:bold;color:white;}
@@ -8,11 +11,12 @@ a{color:#47729d;text-decoration:none;}a:hover{cursor:pointer;text-decoration:und
 .fl{float:left;}
 .fr{float:right;}
 .oh{overflow:hidden;}
-.center{width:800px;margin:0 auto 10px auto;}
+.center{width:960px;margin:0 auto 10px auto;}
 .tc-4{color:#444;}
 .fs14{font-size:14px;}
 .usernote{margin-top:32px;width:800px;height:20px;border-bottom:1px solid #888888;}
-#two-row-left{min-width:535px;margin-right:20px;}
+#two-row-left{width:730px;margin-right:20px;}
+#two-row-right{width:200px;}
 .btn-post{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.btn-post:hover{background:#B0B3D8;cursor:pointer;}
 .btn-follow{margin-top:4px;background:#088;border:1px solid #066;border-radius:3px;font-size:12px;font-weight:bold;color:#ffffff;padding:1px;width:50px;margin-right:11px;}.btn-follow:hover{background:#099;text-decoration:none;cursor:pointer;}
 .btn-extras{margin:0px 6px 3px 0px;background:#888;border:1px solid #d2d2d2;font-size:12px;font-weight:bold;color:#fff;padding:3px;}.btn-extras:hover{background:#fff;text-decoration:none;color:#444;cursor:pointer;}

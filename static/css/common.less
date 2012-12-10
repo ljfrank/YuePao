@@ -1,23 +1,4 @@
-@theme-color:#47729d;
-@theme-color2:#ffb49d;
-@theme-color-navbar:#f0f0f0;
-@theme-bg:#f6f6f6;
-@theme-text:#4a4a4a;
-@theme-link:#8ac6ee;
-@theme-dim:#8c8c8c;
-@theme-fade:#d2d2d2;
-@theme-background:#ffffff;
-
-@content-width:960px;
-@main-width:710px;
-@side-width:210px;
-@image-size:120px;
-@icon-size:48px;
-
-@header-height: 40px;
-
-@font-size:12px;
-@font-family:Microsoft YaHei,Segoe UI,Arial;
+@import "constants.less";
 
 body {
 	margin: 0;
@@ -102,7 +83,7 @@ a{
 }
 
 .center{
-	width:800px;
+	width:@content-width;
 	margin:0 auto 10px auto;
 }
 
@@ -122,11 +103,12 @@ a{
 }
 
 #two-row-left{
-	min-width:535px;
-	margin-right:20px;
+	width:@main-width;
+	margin-right:@column-margin;
 }
 
 #two-row-right{
+	width:@side-width;
 }
 
 .btn-post{
