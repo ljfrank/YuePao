@@ -17,9 +17,9 @@
 	</div>
 	<div class="actions">
 		{% if u.follow == None %}
-			<a href='/follow/{{showuser.id}}/' class='btn-follow fl'>follow</a>
+			<a href='/follow/{{showuser.user.id}}/' class='btn-follow fl'>follow</a>
 		{% else %}
-			<a href='/unfollow/{{showuser.id}}/' class='btn-follow fl'>unfollow</a>
+			<a href='/unfollow/{{showuser.user.id}}/' class='btn-follow fl'>unfollow</a>
 		{% endif %}
 	</div>
 </div>

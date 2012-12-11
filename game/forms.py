@@ -22,6 +22,7 @@ class SignUpForm(forms.Form):
     def save(self, request):
         user = User.objects.create_user(self.cleaned_data['username'], None, self.cleaned_data['password']);
         user_profile = UserProfile(user=user)
+        user.userprofile = user_profile
         user.save()
         user_profile.save()
         user = authenticate(username=self.cleaned_data['username'], password=self.cleaned_data['password'])

@@ -46,4 +46,11 @@ class Photograph(models.Model):
     thumbnail = models.FilePathField(path='photos/%Y/%m/%d/thumbnail/')
     user = models.ForeignKey(UserProfile)
     time_added = models.DateTimeField(auto_now_add=True)
-    
+
+class Notification(models.Model):
+    sender = models.ForeignKey(UserProfile, related_name = 'as_sender_notification_set')
+    receiver = models.ForeignKey(UserProfile, related_name = 'as_receiver_notification_set')
+    time_sended = models.DateTimeField(auto_now_add = True)
+    related_tweet = models.ForeignKey(Tweet)
+    is_new = models.BooleanField(default = True)
+    notification_type = models.CharField(max_length = 10)

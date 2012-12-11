@@ -73,6 +73,13 @@ def settings(request):
         return render_to_response(SETTING_PATH, {'form':form}, context_instance=RequestContext(request))
     return redirect('/')
 
+def notifications(request):
+    if request.method == 'GET':
+        notifications = getNewNotifications(request.user)
+        return render_to_response(NOTIFICATION_PATH, context_instance = RequestContext(request))
+    if request.method == 'POST':
+        return redirect('/')
+
 @login_required
 def users(request, user_list = None):
     if user_list == None:
