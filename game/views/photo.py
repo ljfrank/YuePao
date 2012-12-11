@@ -44,9 +44,13 @@ def uploadPhoto(request):
                 os.makedirs(path)
             path = path + name
             print path
-            if width > 150 or height > 150:
-                scale = 150.0 / max(width, height)
+            if height > 80:
+                scale = 80.0 / height
                 img = img.resize((int(width * scale),int(height * scale)))
+                width = img.size[0]
+                height = img.size[1]
+                if width > 160:
+                    img = img.crop((int(width/2)-80, 0, int(width/2)+80, height))
                 img.save(path)
             response_data['name'] = name
             response = HttpResponse(simplejson.dumps(response_data))
