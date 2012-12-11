@@ -2,6 +2,9 @@
 {% block header %}
 	<link rel="stylesheet" href="{{STATIC_URL}}css/_user.css" type="text/css"/>
     <link rel="stylesheet" href="{{STATIC_URL}}css/_tweetform.css" type="text/css"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}css/jquery.fancybox/jquery.fancybox.css?v=2.1.3" type="text/css"/>
+    <script src="{{STATIC_URL}}js/jquery.form.js"></script>
+    <script src="{{STATIC_URL}}js/jquery.fancybox.pack.js?v=2.1.3"></script>
 {% endblock%}
 {% block left %}
 	<div id='tweetform'>
@@ -9,9 +12,16 @@
 			<div>
 				{{ form.tweet }}
 			</div>
+            <div id="photo_preview" style="text-align:left">
+            </div>
 			<label for="id_message" class='fl'>&nbsp;Anything wanna say today?</label>
-			<input type='submit' value='Post' class='btn-post fr'>
+			<input id='tweet_submit_button' type='submit' value='Post' class='btn-post fr'>
 		</form>
+        <form id='upload_form' action='/upload/photo' method='post' enctype='multipart/form-data'> {% csrf_token %}
+                <input type="file" name="photo" id="photo_file" style="display:none;" accept="image/gif, image/jpeg"/>
+                <input id='upload_photo_button' type='button' value='Upload Photo' class='btn-post fr' onclick=photo.click() />
+                <img id="loading_gif" src="{{STATIC_URL}}images/loading.gif" style="float:right" hidden="hidden"/>
+        </form>
 	</div>
     <div id='tweets' class='oh'>
         {% if tweets%}
@@ -22,6 +32,79 @@
             Ooooops, no Tweets from this user.
         {% endif %}
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                maxWidth: 800,
+                maxHeight: 600,
+                width: '70%',
+                height: '70%',
+                scrolling: 'no',
+                transitionIn: 'fade',
+                transitionOut: 'fade',
+                fitToView: false,
+                autoSize: false,
+                closeClick: false,
+                beforeClose: null,
+            });
+        });
+
+        $(function () {
+            $("#photo_file").change(function () {
+                if ($("#photo_file").val() != "") {
+                    check = checkFileExt($("#photo_file").val());
+                    if (check == false) return false;
+                }
+                $("#tweet_submit_button").attr("disabled", "disabled");
+                $("#upload_photo_button").attr("disabled", "disabled");
+                $("#loading_gif").show();
+                $("#upload_form").ajaxSubmit({
+                    dataType: 'json',
+                    success: function (data) {
+                        $("#loading_gif").hide();
+                        if (data.name) {
+                            $("#photo_preview").append(
+                                "<div style=\"display:inline-table\">" +
+                                "   <table style=\"text-align:center\">" +
+                                "   <tr><td>" +
+                                "       <a href=\"/user/{{ user.id }}/" + data.name + "\" class=\"fancybox\">" +
+                                "           <img src=\"/user/{{ user.id }}/" + data.name + "?type=thumb\" />" +
+                                "       </a>" +
+                                "   </td></tr>" +
+                                "   <tr><td>" +
+                                "       <a href=\"\" style=\"text-align:center\">delete</a>" +
+                                "   </td></tr>" +
+                                "   </table>" +
+                                "</div>"
+                            );
+                        }
+                        else if (data.error) {
+                            alert(data.error);
+                        }
+                        $("#tweet_submit_button").removeAttr("disabled");
+                        $("#upload_photo_button").removeAttr("disabled");
+                    },
+                    error: function (xhr) {
+                        $("#loading_gif").hide();
+                        alert(xhr.responseText);
+                        $("#tweet_submit_button").removeAttr("disabled");
+                        $("#upload_photo_button").removeAttr("disabled");
+                    }
+                });
+            });
+        });
+
+        function checkFileExt(obj) {
+            if (/\.(jpg|jpeg|bmp|png|gif)$/i.test(obj)) {
+                return true;
+            } else {
+                alert('Please upload an image file!');
+                return false;
+            }
+        }
+    </script>
+
 {% endblock %}
 
 {% block right %}
