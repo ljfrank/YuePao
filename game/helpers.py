@@ -17,3 +17,11 @@ def getFans(userID):
     except Follow.DoesNotExist:
         diaos = []
     return diaos
+
+def getNewNotifications(user):
+    try:
+        notifications = list(Notification.objects.filter(receiver=user))
+    except Notification.DoesNotExist:
+        notifications = []
+    return notifications
+

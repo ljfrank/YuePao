@@ -17,11 +17,14 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/user/">Users</a></li>
 					{% if user.is_authenticated %}
-					<li><a href="/settings/">Settings</a></li>
-					<li><a href="/logout/">Log Out</a></li>
+			    		<li><a href="/settings/">Settings</a></li>
+                        {% if user.userprofile.as_receiver_notification_set != None and user.userprofile.as_receiver_notification_set.count != 0 %}
+                            <li><a href="/notifications/">Note({{user.userprofile.as_receiver_notification_set.count}})</a></li>
+                        {% endif %}
+                        <li><a href="/logout/">Log Out</a></li>
 					{% else %}
-					<li><a href="/login/">Log In</a></li>
-					<li><a href="/signup/">Sign Up</a></li>
+					    <li><a href="/login/">Log In</a></li>
+					    <li><a href="/signup/">Sign Up</a></li>
 					{% endif %}
 				</ul>
 			</div>

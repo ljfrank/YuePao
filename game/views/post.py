@@ -25,8 +25,12 @@ def comment(request):
     if request.method == 'POST':
         try:
             tweet = Tweet.objects.get(id=request.POST['tweetid'])
-            comment = Comment(user=request.user, content=request.POST['content'], tweet=tweet)
+            comment = Comment(user=request.user.userprofile, content=request.POST['content'], tweet=tweet)
             comment.save()
+            if tweet.user != request.user.userprofile:
+                notification = Notification(sender = request.user.userprofile, receiver = tweet.user, related_tweet = tweet, notification_type = 'comment')
+                print notification.receiver.user.username
+                notification.save();
             return redirect(request.META.get('HTTP_REFERER', '/'))
         except Tweet.DoesNotExist:
             return redirect('/')
