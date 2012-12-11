@@ -10,6 +10,10 @@
 .tweet-cube-img{
 	padding:5px;
 	margin-right:10px;
+	img{
+		width:50px;
+		height:50px;
+	}
 }
 
 .tweet-cube-contents a{
@@ -41,23 +45,16 @@
 
 /* Tweet Form for post new Tweets */
 #tweetform {
+	border: 1px solid #c0c0c0;
 	overflow:hidden;
 	padding:10px 4px 5px 4px;
 	margin:@box-shadow-width;
-	background-color:#ffffff;
+	background-color:#D0D3F8;
 	color:#8083A8;
-	-webkit-box-shadow:@box-shadow-width @box-shadow-width @box-shadow-width @theme-shadow;
-	-moz-box-shadow:@box-shadow-width @box-shadow-width @box-shadow-width @theme-shadow;
-	filter:progid:DXImageTransform.Microsoft.Shadow(color=@theme-shadow,direction=0,strength=@box-shadow-width);
-	box-shadow:@box-shadow-width @box-shadow-width @box-shadow-width @theme-shadow;
 	textarea{
 		rows:3;
 	}
 	label {
 		margin-left:13px;
 	}
-}
-
-#id_tweet {
-	width: 700px;
 }
