@@ -1,12 +1,14 @@
 .button1{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.button1:hover{background:#B0B3D8;cursor:pointer;}
 .button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
 .button2:hover{background:#CFA156;}
+.spander{clear:both;}
 body{margin:0;background-color:#ffffff;font-family:Microsoft YaHei,Segoe UI,Arial;font-size:12px;}
 a{color:#47729d;text-decoration:none;}a:hover{cursor:pointer;text-decoration:underline;}
 #header{width:100%;background-image:-webkit-linear-gradient(top, #333333, #222222);background-image:-o-linear-gradient(top, #333333, #222222);background-image:linear-gradient(top, #333333, #222222);position:fixed;height:36px;top:0;z-index:1000;}#header #logo{padding-top:10px;float:left;font-weight:bold;color:white;}
 #header #header-nav{overflow:hidden;zoom:1;}
 #header #nav{list-style:none;float:right;margin:0;}#header #nav li{width:55px;float:left;text-align:center;}#header #nav li a{display:block;padding:10px 0px 10px 0px;color:#f0f0f0;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);}
-#content{text-align:center;position:relative;margin:50px auto 0 auto;}
+#content{text-align:center;margin:50px auto 0 auto;}#content #two-row-left{float:left;width:600px;}
+#content #two-row-right{float:right;width:180px;}
 #footer{border-top:1px solid #EAEAEA;color:#666666;position:relative;margin-top:10px;}#footer a,#footer a:visited{color:#000000;}
 .fl{float:left;}
 .fr{float:right;}
@@ -14,10 +16,9 @@ a{color:#47729d;text-decoration:none;}a:hover{cursor:pointer;text-decoration:und
 .center{width:800px;margin:0 auto 10px auto;}
 .tc-4{color:#444;}
 .fs14{font-size:14px;}
-.usernote{width:800px;margin-top:5px;height:55px;position:relative;border-bottom:1px solid #888888;}.usernote .shortcut{width:50px;height:50px;position:absolute;top:0px;left:10px;}
-.usernote .description{postion:absolute;margin-left:70px;float:left;text-align:left;}.usernote .description #username,.usernote .description span{display:block;}
+.usernote{width:800px;margin-top:5px;height:53px;position:relative;border-bottom:1px solid #888888;}.usernote .shortcut{width:48px;height:48px;position:absolute;top:0px;left:10px;}
+.usernote .description{postion:absolute;margin-left:68px;float:left;text-align:left;}.usernote .description #username,.usernote .description span{display:block;}
 .usernote .actions{position:absolute;top:0px;right:0px;}
-#two-row-left{width:535px;margin-right:20px;}
 .btn-post{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.btn-post:hover{background:#B0B3D8;cursor:pointer;}
 .btn-follow{margin-top:4px;background:#088;border:1px solid #066;border-radius:3px;font-size:12px;font-weight:bold;color:#ffffff;padding:1px;width:60px;margin-right:11px;}.btn-follow:hover{background:#099;text-decoration:none;cursor:pointer;}
 .btn-extras{margin:0px 6px 3px 0px;background:#888;border:1px solid #d2d2d2;font-size:12px;font-weight:bold;color:#fff;padding:3px;}.btn-extras:hover{background:#fff;text-decoration:none;color:#444;cursor:pointer;}
