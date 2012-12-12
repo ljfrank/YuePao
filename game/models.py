@@ -10,28 +10,6 @@ class UserProfile(models.Model):
     follows = models.ManyToManyField("self", through='Follow', symmetrical=False)
     icon = models.FilePathField(path='icons/')
 
-class Tweet(models.Model):
-    user = models.ForeignKey(UserProfile)
-    content = models.CharField(max_length=200)
-    time_posted = models.DateTimeField(auto_now_add=True)
-    time_updated = models.DateTimeField(auto_now=True)
-    retweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='original_tweet_set')
-    original_tweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='retweet_set')
-    retweet_count = models.IntegerField(default=0)
-    deleted = models.BooleanField(default=False)
-
-class Comment(models.Model):
-    user = models.ForeignKey(UserProfile)
-    tweet = models.ForeignKey(Tweet)
-    time_commented = models.DateTimeField(auto_now_add=True)
-    time_updated = models.DateTimeField(auto_now=True)
-    content = models.CharField(max_length=200)
-
-class Follow(models.Model):
-    diaos = models.ForeignKey(UserProfile, related_name='as_diaos_set')
-    goddess = models.ForeignKey(UserProfile, related_name='as_goddess_set')
-    time_followed = models.DateTimeField(auto_now_add=True)
-
 class Gallery(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
@@ -45,7 +23,31 @@ class Photograph(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/',max_length=10485760)
     thumbnail = models.FilePathField(path='photos/%Y/%m/%d/thumbnail/')
     user = models.ForeignKey(UserProfile)
+    gallery = models.ForeignKey(Gallery)
     time_added = models.DateTimeField(auto_now_add=True)
+
+class Tweet(models.Model):
+    user = models.ForeignKey(UserProfile)
+    content = models.CharField(max_length=200)
+    time_posted = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
+    retweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='original_tweet_set')
+    original_tweet = models.ForeignKey('self', blank=True, null=True, on_delete=models.SET_NULL, related_name='retweet_set')
+    retweet_count = models.IntegerField(default=0)
+    photos = models.ManyToManyField(Photograph)
+    deleted = models.BooleanField(default=False)
+
+class Comment(models.Model):
+    user = models.ForeignKey(UserProfile)
+    tweet = models.ForeignKey(Tweet)
+    time_commented = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
+    content = models.CharField(max_length=200)
+
+class Follow(models.Model):
+    diaos = models.ForeignKey(UserProfile, related_name='as_diaos_set')
+    goddess = models.ForeignKey(UserProfile, related_name='as_goddess_set')
+    time_followed = models.DateTimeField(auto_now_add=True)
 
 class Notification(models.Model):
     sender = models.ForeignKey(UserProfile, related_name = 'as_sender_notification_set')

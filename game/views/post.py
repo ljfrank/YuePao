@@ -13,10 +13,22 @@ def posts(request, userID):
 
 @login_required
 def tweet(request):
+    user = request.user.userprofile
     if request.method == 'POST':
         form = TweetForm(request.POST)
         if form.is_valid():
+            #Save new tweet into database
             tweet = Tweet(user=request.user.userprofile, content=form.cleaned_data['tweet'])
+            tweet.save()
+            #Check uploaded photos and create new relationship with the new tweet
+            photo_list = request.POST.getlist('photo')
+            for photo_name in photo_list:
+                try:
+                    photo = Photograph.objects.get(name=photo_name)
+                    if photo.user == user:
+                        tweet.photos.add(photo)
+                except Photograph.DoesNotExist:
+                    response = HttpResponse('Invalid Post Data!')
             tweet.save()
     return redirect('/')
 

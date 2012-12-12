@@ -19,18 +19,20 @@ import time
 import os
 
 @login_required
-def uploadPhoto(request):
+def uploadPhoto(request, isIcon = False):
     response_data = {}
     if request.method == 'POST':
         form = UploadPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             img = request.FILES['photo']
             path = os.path.join(MEDIA_ROOT, time.strftime('photos/%Y/%m/%d',time.localtime(time.time())))
-            print path
             name = request.user.username + '-' + time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time())) + img.name[img.name.rfind('.'):]
             img.name = name
             user = UserProfile.objects.get(user=request.user)
-            photo = Photograph(name=name, photo=img, user=user)
+            if isIcon:
+                photo = Photograph(name=name, photo=img, user=user, gallery=Gallery.objects.get(name='Icons', user=user))
+            else:
+                photo = Photograph(name=name, photo=img, user=user, gallery=Gallery.objects.get(name='Photos in Tweets', user=user))
             photo.save()
             photo.name = photo.photo.name[photo.photo.name.rfind('/')+1:]
             photo.save()
@@ -39,11 +41,9 @@ def uploadPhoto(request):
             width = img.size[0]
             height = img.size[1]
             path = os.path.join(path, 'thumb/')
-            print path
             if not os.path.exists(path):
                 os.makedirs(path)
             path = path + name
-            print path
             if height > 80:
                 scale = 80.0 / height
                 img = img.resize((int(width * scale),int(height * scale)))
@@ -56,6 +56,25 @@ def uploadPhoto(request):
             response = HttpResponse(simplejson.dumps(response_data))
         else:
             response_data['error'] = 'Error occured! Please check your file.'
+            response = HttpResponse(simplejson.dumps(response_data))
+    else:
+        response_data['error'] = 'Invalid Access'
+        response = HttpResponse(simplejson.dumps(response_data))
+    return response
+
+@login_required
+@csrf_exempt
+def deletePhoto(request):
+    response_data = {}
+    if request.method == 'POST':
+        try:
+            photoName = request.POST['photo_name']
+            photo = Photograph.objects.get(name=photoName, user=request.user.userprofile)
+            photo.delete()
+            response_data['success'] = 'successful'
+            response = HttpResponse(simplejson.dumps(response_data))
+        except Photograph.DoesNotExist:
+            response_data['error'] = 'Photo does not exist!'
             response = HttpResponse(simplejson.dumps(response_data))
     else:
         response_data['error'] = 'Invalid Access'
@@ -86,7 +105,7 @@ def iconPreview(request, photoName = None):
                 response = HttpResponse(simplejson.dumps(response_data))
     else:
         if photoName == None or photoName == '':
-            return uploadPhoto(request)
+            return uploadPhoto(request, True)
         else:
             response_data['error'] = 'Invalid Access'
             response = HttpResponse(simplejson.dumps(response_data))

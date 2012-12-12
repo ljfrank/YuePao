@@ -6,6 +6,11 @@
 		<div class='tweet-cube-contents oh'>
 			<span><a href="/user/{{tweet.user.user.id}}/">{{tweet.user.user.username}}</a> {% if tweet.retweet%}retweeted:{% else %}:{% endif %}</span>
 			<div class="tweet-cube-content"> {{tweet.content}}</div>
+            <div style="text-align:left">
+                {% for photo in tweet.photos.all %}
+                <a href="/user/{{ tweet.user.user.id }}/{{ photo.name }}" class="fancybox"><img src="/user/{{ tweet.user.user.id }}/{{ photo.name }}?type=thumb" /></a>
+                {% endfor %}
+            </div>
 		</div>
 	</div>
 	<div class='tweet-cube-extras'>

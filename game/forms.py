@@ -25,6 +25,11 @@ class SignUpForm(forms.Form):
         user.userprofile = user_profile
         user.save()
         user_profile.save()
+        #add default gallery for new user
+        gallery_icon = Gallery(name='Icons', description='', user=user_profile, private=True, able_to_delete=False)
+        gallery_tweet_photo = Gallery(name='Photos in Tweets', description='', user=user_profile, private=True, able_to_delete=False)
+        gallery_icon.save()
+        gallery_tweet_photo.save()
         user = authenticate(username=self.cleaned_data['username'], password=self.cleaned_data['password'])
         login(request, user)
         return user

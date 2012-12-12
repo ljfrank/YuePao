@@ -20,7 +20,7 @@
         <form id='upload_form' action='/upload/photo' method='post' enctype='multipart/form-data'> {% csrf_token %}
                 <input type="file" name="photo" id="photo_file" style="display:none;" accept="image/gif, image/jpeg"/>
                 <input id='upload_photo_button' type='button' value='Upload Photo' class='btn-post fr' onclick=photo.click() />
-                <img id="loading_gif" src="{{STATIC_URL}}images/loading.gif" style="float:right" hidden="hidden"/>
+                <img id="loading_gif" src="{{STATIC_URL}}images/loading.gif" style="float:right;display:none"/>
         </form>
 	</div>
     <div id='tweets' class='oh'>
@@ -34,6 +34,8 @@
     </div>
 
     <script type="text/javascript">
+        var photoNum = 0;
+
         $(document).ready(function () {
             $(".fancybox").fancybox({
                 maxWidth: 800,
@@ -64,8 +66,9 @@
                     success: function (data) {
                         $("#loading_gif").hide();
                         if (data.name) {
+                            photoNum++;
                             $("#photo_preview").append(
-                                "<div style=\"display:inline-table\">" +
+                                "<div id=\"photo_" + photoNum + "\" style=\"display:inline-table\">" +
                                 "   <table style=\"text-align:center\">" +
                                 "   <tr><td>" +
                                 "       <a href=\"/user/{{ user.id }}/" + data.name + "\" class=\"fancybox\">" +
@@ -73,9 +76,10 @@
                                 "       </a>" +
                                 "   </td></tr>" +
                                 "   <tr><td>" +
-                                "       <a href=\"\" style=\"text-align:center\">delete</a>" +
+                                "       <a href=\"javascript:deletePhoto('" + data.name + "'," + photoNum + ")\" style=\"text-align:center\">delete</a>" +
                                 "   </td></tr>" +
                                 "   </table>" +
+                                "   <input type=\"hidden\" name=\"photo\" value=\"" + data.name + "\" />" +
                                 "</div>"
                             );
                         }
@@ -103,6 +107,23 @@
                 return false;
             }
         }
+
+        function deletePhoto(photoName, id) {
+            $("#loading_gif").show();
+            $.post(
+                "/delete/photo",
+                {
+                    photo_name: photoName,
+                },
+                function (data) {
+                    $("#loading_gif").hide();
+                    if (data.success)
+                        $("#photo_" + id).remove();
+                    else if (data.error)
+                        alert(data.error);
+                }, "json");
+        }
+
     </script>
 
 {% endblock %}
