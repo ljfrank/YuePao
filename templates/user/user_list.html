@@ -1,5 +1,5 @@
-{% extends "frame.html" %}
-{% block content %}
+{% extends "two-row.html" %}
+{% block left %}
 <div id="users">
 	{% for u in user_profiles %}
 		{% if user != u.user %}
@@ -8,3 +8,7 @@
 	{% endfor%}
 </div>
 {% endblock %}
+
+{% block right %}
+	{% include "user/_user_section.html" with showuser=user %}
+{% endblock%}

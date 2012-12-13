@@ -2,6 +2,6 @@
 .button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
 .button2:hover{background:#CFA156;}
 .spander{clear:both;}
-#user-section{border:1px solid #c0c0c0;}#user-section .user-extra{list-style:none;text-align:left;margin-top:40px;margin-left:35px;}#user-section .user-extra li a{padding-right:20px;}
-#user-section #user-section-name{margin-top:8px;margin-left:15px;float:left;clear:right;text-align:left;font-size:16px;}
-#user-section #user-section-img{float:left;margin-top:10px;margin-left:10px;}#user-section #user-section-img img{width:48px;height:48px;}
+#user-section{border:1px solid #c0c0c0;}#user-section .user-extra{list-style:none;text-align:left;margin-top:-15px;margin-left:45px;}
+#user-section #user-section-head{text-align:left;}#user-section #user-section-head #user-section-name{vertical-align:top;display:inline-block;margin-top:8px;margin-left:15px;clear:right;text-align:left;font-size:16px;}
+#user-section #user-section-head #user-section-img{vertical-align:top;display:inline-block;margin-top:10px;margin-left:10px;}#user-section #user-section-head #user-section-img img{width:48px;height:48px;}

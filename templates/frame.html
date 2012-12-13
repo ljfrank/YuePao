@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-    <div id="content" class="center oh">
+    <div id="content">
         {% block content %}{% endblock %}
     </div>
 	<div id="footer" class="center">
@@ -38,4 +38,37 @@
 		<div id="footer-right" class="fr">Hey Jude, don't make it bad.</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+
+function CleanWhiteDomNodes(element)
+{
+	for(var i=0; i<element.childNodes.length; i++)   
+    {   
+        var node = element.childNodes[i];   
+        if(node.nodeType == 3 && !/\S/.test(node.nodeValue))   
+        {   
+            node.parentNode.removeChild(node);   
+        }
+		if(node.nodeType != 3)
+		{
+			CleanWhiteDomNodes(node);
+		}
+    } 
+}
+
+var m_UserSection = document.getElementById("user-section-head");
+if(m_UserSection != null)
+{
+	CleanWhiteDomNodes(m_UserSection);
+}
+
+var m_Content = document.getElementById("content");
+if(m_Content)
+{
+	CleanWhiteDomNodes(m_Content);
+}
+		
+</script>
+
 </html>
