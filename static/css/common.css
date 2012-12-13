@@ -10,7 +10,8 @@
 .spander{clear:both;}
 #user-section{border:1px solid #c0c0c0;}#user-section .user-extra{list-style:none;text-align:left;margin-top:-15px;margin-left:45px;}
 #user-section #user-section-head{text-align:left;}#user-section #user-section-head #user-section-name{vertical-align:top;display:inline-block;margin-top:8px;margin-left:15px;clear:right;text-align:left;font-size:16px;}
-#user-section #user-section-head #user-section-img{vertical-align:top;display:inline-block;margin-top:10px;margin-left:10px;}#user-section #user-section-head #user-section-img img{width:48px;height:48px;}
+#user-section #user-section-head #user-section-img{vertical-align:top;display:inline-block;margin-top:10px;margin-left:10px;position:relative;}#user-section #user-section-head #user-section-img img{vertical-align:top;width:48px;height:48px;}
+#user-section #user-section-head #user-section-img a{position:absolute;text-align:center;top:48px;left:-5px;}
 body{margin:0;background-color:#ffffff;font-family:Microsoft YaHei,Segoe UI,Arial;font-size:12px;}
 a{color:#47729d;text-decoration:none;}a:hover{cursor:pointer;text-decoration:underline;}
 #header{width:100%;background-image:-webkit-linear-gradient(top, #333333, #222222);background-image:-o-linear-gradient(top, #333333, #222222);background-image:linear-gradient(top, #333333, #222222);position:fixed;height:36px;top:0;z-index:1000;}#header #logo{padding-top:10px;float:left;font-weight:bold;color:white;}

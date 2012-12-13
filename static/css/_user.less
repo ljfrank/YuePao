@@ -25,9 +25,18 @@
 			display: inline-block;
 			margin-top:10px;
 			margin-left:10px;
+			position: relative;
 			img{
+				vertical-align: top;
 				width:@icon-size;
 				height:@icon-size;
+			}
+			a
+			{
+				position: absolute;
+				text-align: center;
+				top: @icon-size;
+				left: -5px;
 			}
 		}
 	}

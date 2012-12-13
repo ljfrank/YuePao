@@ -4,9 +4,9 @@
             <img src='/user/{{showuser.id}}/icon'/>
 			{% if showuser != user %}
 				{% if follow == None %}
-				<a href='/follow/{{showuser.id}}/' class='btn-follow fl'>follow</a>
+				<a href='/follow/{{showuser.id}}/' class='btn-follow'>follow</a>
 				{% else %}
-				<a href='/unfollow/{{showuser.id}}/' class='btn-follow fl'>unfollow</a>
+				<a href='/unfollow/{{showuser.id}}/' class='btn-follow'>unfollow</a>
 				{% endif %}
 			{% endif %}
 		</div>
