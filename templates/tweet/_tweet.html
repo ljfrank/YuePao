@@ -11,9 +11,9 @@
 		</div>
 	</div>
 	<div class='tweet-cube-extras'>
+		<button class='btn-extras' onClick=''>Star</button>
+		<button class='btn-extras' onClick=''>Retweet</button>
 		<button class='btn-extras' onClick='showComments({{tweet.id}})'>Comments ({{tweet.comment_set.all|length}})</button>
-		<button class='btn-extras fr' onClick=''>Star</button>
-		<button class='btn-extras fr' onClick=''>Retweet</button>
 	</div>
 	<div class='tweet-cube-comments tweet-cube-comments-{{tweet.id}}'>
 		<div class='tweet-cube-newcomment'>
@@ -27,6 +27,7 @@
 		<div class='comment'>
 			<img class="figure_small" src="/user/{{comment.user.user.id}}/icon" />
 			<span><a href="/user/{{comment.user.user.id}}/">{{comment.user.user.username}}</a> :&nbsp;&nbsp;{{comment.content}}</span>
+			<button class='btn-extras' onClick=''>Reply</button>
 		</div>
 		{% endfor %}
 	</div>
