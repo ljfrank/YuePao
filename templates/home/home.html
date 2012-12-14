@@ -1,10 +1,10 @@
 {% extends "two-row.html" %}
 {% block header %}
-	<link rel="stylesheet" href="{{STATIC_URL}}css/_user.css" type="text/css"/>
     <link rel="stylesheet" href="{{STATIC_URL}}css/_tweetform.css" type="text/css"/>
     <link rel="stylesheet" href="{{STATIC_URL}}css/jquery.fancybox/jquery.fancybox.css?v=2.1.3" type="text/css"/>
     <script src="{{STATIC_URL}}js/jquery.form.js"></script>
     <script src="{{STATIC_URL}}js/jquery.fancybox.pack.js?v=2.1.3"></script>
+	<script src="{{STATIC_URL}}js/misc.js"></script>
 {% endblock%}
 {% block left %}
 	<div id='tweetform'>
@@ -23,7 +23,7 @@
                 <img id="loading_gif" src="{{STATIC_URL}}images/loading.gif" style="float:right;display:none"/>
         </form>
 	</div>
-    <div id='tweets' class='oh'>
+    <div id='tweets'>
         {% if tweets%}
             {% for tweet in tweets %}
             {% include "tweet/_tweet.html" %}

@@ -81,6 +81,11 @@ a{
 	}
 }
 
+#tweets
+{
+	margin-top: 10px;
+}
+
 .fl{
 	float:left;
 }
@@ -109,17 +114,19 @@ a{
 #users
 {
 	.usernote{
-		margin-top: 5px;
 		width: 100%;
 		position:relative;
 		border-bottom: 1px solid #888888;
 		text-align:left;
 		.shortcut{
 			display: inline-block;
-			width:@icon-size;
-			height:@icon-size;
 			margin-top: 5px;
 			margin-left: 10px;
+			img
+			{
+				width:@icon-size;
+				height:@icon-size;
+			}
 		}
 		.description{
 			display: inline-block;
@@ -138,51 +145,25 @@ a{
 }
 
 .btn-post{
+	.button_base;
 	background: #A0A3C8;
 	border: 1px solid #8083A8;
-	border-radius: 3px;
-	font-size: 14px;
-	font-weight: bold;
-	color:#ffffff;
-	padding: 3px 12px;
-	min-width:80px;
 	margin-right:17px;
 	&:hover{
 		background: #B0B3D8;
-		cursor:pointer;
 	}
 }
 
 .btn-follow {
-	margin-top:4px;
+	.button_base;
 	background: #088;
 	border: 1px solid #066;
-	border-radius: 3px;
 	font-size: 12px;
-	font-weight: bold;
 	color:#ffffff;
-	padding: 1px;
-	width:60px;
-	margin-right:11px;
+	padding: 1px 3px;
+	min-width:55px;
 	&:hover{
 		background: #099;
 		text-decoration:none;
-		cursor:pointer;
-	}
-}
-
-.btn-extras{
-	margin:0px 6px 3px 0px;
-	background: #888;
-	border: 1px solid #d2d2d2;
-	font-size: 12px;
-	font-weight: bold;
-	color:#fff;
-	padding: 3px;
-	&:hover{
-		background: #fff;
-		text-decoration:none;
-		color:#444;
-		cursor:pointer;
 	}
 }

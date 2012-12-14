@@ -14,17 +14,8 @@
 			<form method='post' action='/login/' id="loginform">{% csrf_token %}
 				{{ form.as_p }}
 				<div id="buttons">
-					<input type="submit" value="Log In" class="btn-login">
+					<input type="submit" value="Log In" id="loginbutton">
 					<a href='/signup/' id="signupbutton">Sign Up</a>
-					<!--
-					<button id="loginbutton">login</button>
-					<button id="signupbutton">signup</button>
-					<script type="text/javascript">
-						$("loginbutton").onClick = function() {
-							$("loginform").submit();
-						}
-					</script>
-					-->
 				</div>
 			</form>
 		</div>

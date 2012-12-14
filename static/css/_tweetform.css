@@ -1,13 +1,18 @@
-.button1{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.button1:hover{background:#B0B3D8;cursor:pointer;}
-.button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
+.button_base{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;}.button_base:hover{cursor:pointer;}
+.button1{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#A0A3C8;border:1px solid #8083A8;}.button1:hover{cursor:pointer;}
+.button1:hover{background:#B0B3D8;}
+.button2{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#9FA156;border:1px solid #828641;}.button2:hover{cursor:pointer;}
 .button2:hover{background:#CFA156;}
 .spander{clear:both;}
-.tweet_cube{margin:10px;text-align:left;padding:10px;border:1px solid #c0c0c0;}
-.tweet-cube-img{padding:5px;margin-right:10px;}.tweet-cube-img img{width:50px;height:50px;}
-.tweet-cube-contents a{font-size:16px;}
-.tweet-cube-content{margin:6px;background:#d0d0d0;padding:4px;font-size:14px;}
-.tweet-cube-extras{background:#f0f0f0;padding:6px 0px 6px 6px;}
-.tweet-cube-comments{display:none;background:#f0f0f0;padding:6px 0px 4px 6px;}
-.tweet-cube-newcomment{background:#f0f0f0;padding:6px 0px 4px 6px;}
+.figure_small{width:48px;height:48px;}
+.tweet_cube{text-align:left;padding:10px;border-bottom:1px solid #c0c0c0;}
+.tweet-cube-img{display:inline-block;margin-right:10px;}.tweet-cube-img img{width:48px;height:48px;}
+.tweet-cube-contents{display:inline-block;vertical-align:top;padding:2px 10px 2px 10px;font-size:14px;border-top:1px solid #c0c0c0;border-bottom:1px solid #c0c0c0;min-height:44px;width:494px;}
+.tweet-cube-extras{margin-top:4px;margin-bottom:4px;}
+.tweet-cube-comments{display:none;}.tweet-cube-comments .comment{padding-left:10px;margin-top:20px;padding-bottom:20px;border-bottom:1px solid #d1d1d1;}.tweet-cube-comments .comment .figure_small{vertical-align:top;}
+.tweet-cube-comments .comment span{display:inline-block;margin-left:10px;}
+.tweet-cube-comments .tweet-cube-newcomment{padding:6px 0px 4px 6px;}.tweet-cube-comments .tweet-cube-newcomment input[name='content']{width:480px;}
 #tweetform{border:1px solid #c0c0c0;overflow:hidden;padding:10px 4px 5px 4px;color:#8083A8;}#tweetform textarea{rows:3;}
 #tweetform label{margin-left:13px;}
+.btn-extras{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#A0A3C8;border:1px solid #8083A8;font-size:12px;}.btn-extras:hover{cursor:pointer;}
+.btn-extras:hover{background:#B0B3D8;text-decoration:none;}

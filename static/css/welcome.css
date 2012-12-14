@@ -1,11 +1,15 @@
-.button1{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.button1:hover{background:#B0B3D8;cursor:pointer;}
-.button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
+.button_base{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;}.button_base:hover{cursor:pointer;}
+.button1{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#A0A3C8;border:1px solid #8083A8;}.button1:hover{cursor:pointer;}
+.button1:hover{background:#B0B3D8;}
+.button2{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#9FA156;border:1px solid #828641;}.button2:hover{cursor:pointer;}
 .button2:hover{background:#CFA156;}
 .spander{clear:both;}
+.figure_small{width:48px;height:48px;}
 #welcome{text-align:left;}
 #login{width:300px;height:180px;background-color:#ffffff;-webkit-box-shadow:0px 0px 15px black;-moz-box-shadow:0px 0px 15px black;filter:progid:dximagetransform.microsoft.shadow(color=#000000, direction=0, strength=15);box-shadow:0px 0px 15px black;display:inline-block;text-align:center;vertical-align:top;margin-top:290px;margin-left:30px;}#login form{padding-top:30px;}
 #welcome_logo{display:inline-block;vertical-align:top;margin-top:50px;}
 #welcome_slogan{display:inline-block;vertical-align:top;margin-top:300px;margin-left:-350px;}
-#loginbutton{width:150px;height:50px;background-color:#00ff00;}
-.btn-login{background:#6FA156;border:1px solid #528641;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;}.btn-login:hover{cursor:pointer;background:#3fa156;}
-#signupbutton{background:#9FA156;border:1px solid #828641;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-left:14px;}#signupbutton:hover{text-decoration:none;background:#CFA156;}
+#loginbutton{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#6FA156;border:1px solid #528641;height:27px;margin:0px;}#loginbutton:hover{cursor:pointer;}
+#loginbutton:hover{background:#3fa156;}
+#signupbutton{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#9FA156;border:1px solid #828641;margin-left:14px;}#signupbutton:hover{cursor:pointer;}
+#signupbutton:hover{text-decoration:none;background:#CFA156;}

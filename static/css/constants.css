@@ -1,4 +1,7 @@
-.button1{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;}.button1:hover{background:#B0B3D8;cursor:pointer;}
-.button2{background:#A0A3C8;border:1px solid #8083A8;border-radius:3px;font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;margin-right:17px;background:#9FA156;border:1px solid #828641;}.button2:hover{background:#B0B3D8;cursor:pointer;}
+.button_base{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;}.button_base:hover{cursor:pointer;}
+.button1{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#A0A3C8;border:1px solid #8083A8;}.button1:hover{cursor:pointer;}
+.button1:hover{background:#B0B3D8;}
+.button2{font-size:14px;font-weight:bold;color:#ffffff;padding:3px 12px;min-width:80px;background:#9FA156;border:1px solid #828641;}.button2:hover{cursor:pointer;}
 .button2:hover{background:#CFA156;}
 .spander{clear:both;}
+.figure_small{width:48px;height:48px;}

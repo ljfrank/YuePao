@@ -23,24 +23,29 @@
 @font-size:12px;
 @font-family:Microsoft YaHei,Segoe UI,Arial;
 
-.button1{
-	background: #A0A3C8;
-	border: 1px solid #8083A8;
-	border-radius: 3px;
+.button_base
+{
 	font-size: 14px;
 	font-weight: bold;
 	color:#ffffff;
 	padding: 3px 12px;
 	min-width:80px;
-	margin-right:17px;
 	&:hover{
-		background: #B0B3D8;
 		cursor:pointer;
 	}
 }
 
+.button1{
+	.button_base;
+	background: #A0A3C8;
+	border: 1px solid #8083A8;
+	&:hover{
+		background: #B0B3D8;
+	}
+}
+
 .button2{
-	.button1;
+	.button_base;
 	background: #9FA156;
 	border: 1px solid #828641;
 	&:hover{
@@ -51,4 +56,10 @@
 .spander
 {
 	clear: both;
+}
+
+.figure_small
+{
+	width: @icon-size;
+	height: @icon-size;
 }
